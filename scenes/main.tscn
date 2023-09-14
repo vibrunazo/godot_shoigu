@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://66fvugahhf8y"]
+[gd_scene load_steps=4 format=3 uid="uid://66fvugahhf8y"]
 
 [ext_resource type="PackedScene" uid="uid://bk7nyxujsjke" path="res://scenes/bird.tscn" id="1_ibgmi"]
 [ext_resource type="PackedScene" uid="uid://mlc87t4e6eux" path="res://scenes/floor.tscn" id="2_dih4j"]
+[ext_resource type="PackedScene" uid="uid://dxpoilp5kco28" path="res://scenes/game_cam.tscn" id="3_5uk06"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -15,11 +16,35 @@ mouse_filter = 1
 [node name="Bird" parent="." instance=ExtResource("1_ibgmi")]
 position = Vector2(487, 191)
 
-[node name="Floor" parent="." instance=ExtResource("2_dih4j")]
-position = Vector2(128, 520)
+[node name="GameCam" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_5uk06")]
+position = Vector2(600, 544)
+target = NodePath("../Bird")
 
-[node name="Floor2" parent="." instance=ExtResource("2_dih4j")]
-position = Vector2(384, 520)
+[node name="floors" type="Node2D" parent="."]
 
-[node name="Floor3" parent="." instance=ExtResource("2_dih4j")]
-position = Vector2(640, 520)
+[node name="Floor" parent="floors" instance=ExtResource("2_dih4j")]
+position = Vector2(-320, 960)
+
+[node name="Floor2" parent="floors" instance=ExtResource("2_dih4j")]
+position = Vector2(-64, 960)
+
+[node name="Floor3" parent="floors" instance=ExtResource("2_dih4j")]
+position = Vector2(192, 960)
+
+[node name="Floor4" parent="floors" instance=ExtResource("2_dih4j")]
+position = Vector2(448, 960)
+
+[node name="Floor5" parent="floors" instance=ExtResource("2_dih4j")]
+position = Vector2(704, 960)
+
+[node name="Floor6" parent="floors" instance=ExtResource("2_dih4j")]
+position = Vector2(960, 960)
+
+[node name="Floor7" parent="floors" instance=ExtResource("2_dih4j")]
+position = Vector2(1216, 960)
+
+[node name="Floor8" parent="floors" instance=ExtResource("2_dih4j")]
+position = Vector2(1472, 960)
+
+[node name="Floor9" parent="floors" instance=ExtResource("2_dih4j")]
+position = Vector2(1728, 960)

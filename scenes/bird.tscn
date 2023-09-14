@@ -83,13 +83,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4bwl"]
-size = Vector2(58, 130)
+size = Vector2(97, 255)
 
 [node name="Bird" type="RigidBody2D"]
 script = ExtResource("1_1g6im")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_y023a")
 autoplay = "default"
 frame_progress = 0.256246
@@ -100,5 +100,5 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 22)
+position = Vector2(1.5, 47.5)
 shape = SubResource("RectangleShape2D_t4bwl")

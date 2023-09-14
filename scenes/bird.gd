@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 @export var flap_power = 500
+@export var speed = 200
 
 var flap_up: bool = true
 @onready var anim: AnimatedSprite2D = $Anim
@@ -9,6 +10,7 @@ var flap_up: bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim.animation_looped.connect(looped)
+	linear_velocity.x = speed
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,6 +27,7 @@ func _unhandled_input(event):
 
 func flap():
 	linear_velocity.y = -flap_power
+	linear_velocity.x = speed
 
 
 func looped():
