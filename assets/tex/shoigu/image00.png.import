@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cli0vocagx7rj"
-path="res://.godot/imported/image15.png-21adaebca1c543e7d4480d8c0e326a98.ctex"
+uid="uid://bkd0gjyf8bi5g"
+path="res://.godot/imported/image00.png-6ef12e76320e2682ebf45b328284fecb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tex/image15.png"
-dest_files=["res://.godot/imported/image15.png-21adaebca1c543e7d4480d8c0e326a98.ctex"]
+source_file="res://assets/tex/shoigu/image00.png"
+dest_files=["res://.godot/imported/image00.png-6ef12e76320e2682ebf45b328284fecb.ctex"]
 
 [params]
 

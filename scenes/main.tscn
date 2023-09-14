@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://66fvugahhf8y"]
+[gd_scene load_steps=3 format=3 uid="uid://66fvugahhf8y"]
 
 [ext_resource type="PackedScene" uid="uid://bk7nyxujsjke" path="res://scenes/bird.tscn" id="1_ibgmi"]
+[ext_resource type="PackedScene" uid="uid://mlc87t4e6eux" path="res://scenes/floor.tscn" id="2_dih4j"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -13,3 +14,12 @@ mouse_filter = 1
 
 [node name="Bird" parent="." instance=ExtResource("1_ibgmi")]
 position = Vector2(487, 191)
+
+[node name="Floor" parent="." instance=ExtResource("2_dih4j")]
+position = Vector2(128, 520)
+
+[node name="Floor2" parent="." instance=ExtResource("2_dih4j")]
+position = Vector2(384, 520)
+
+[node name="Floor3" parent="." instance=ExtResource("2_dih4j")]
+position = Vector2(640, 520)
