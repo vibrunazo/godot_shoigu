@@ -15,16 +15,19 @@ func _ready():
 func _process(delta):
 	pass
 
-func _unhandled_key_input(event):
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.is_pressed():
+		flap()
 	if event.is_action_pressed("ui_accept"):
 		flap()
+		
+
 
 func flap():
 	linear_velocity.y = -flap_power
 
 
 func looped():
-	print('looped')
 	anim.stop()
 	flap_up = !flap_up
 	if flap_up:
