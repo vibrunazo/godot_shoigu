@@ -1,4 +1,6 @@
-extends Node2D
+extends RigidBody2D
+
+@export var flap_power = 500
 
 var flap_up: bool = true
 @onready var anim: AnimatedSprite2D = $Anim
@@ -12,6 +14,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func _unhandled_key_input(event):
+	if event.is_action_pressed("ui_accept"):
+		flap()
+
+func flap():
+	linear_velocity.y = -flap_power
+
 
 func looped():
 	print('looped')
