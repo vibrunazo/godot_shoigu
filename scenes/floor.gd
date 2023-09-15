@@ -1,3 +1,4 @@
+@icon("res://assets/tex/floor.png")
 extends RigidBody2D
 
 class_name Floor

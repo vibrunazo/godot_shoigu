@@ -1,6 +1,9 @@
+@icon("res://assets/tex/shoigu/image10.png")
 extends RigidBody2D
 
-@export var flap_power = 500
+class_name Bird
+
+@export var flap_power = 400
 @export var speed = 200
 
 var flap_up: bool = true
@@ -13,7 +16,7 @@ func _ready():
 	linear_velocity.x = speed
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame. 'delta' is the elapsed time since the previous frame.4
 func _process(delta):
 	pass
 
