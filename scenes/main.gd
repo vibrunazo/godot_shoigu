@@ -22,6 +22,7 @@ func _on_spawn_timer_timeout():
 	$SpawnTimer.start(randf_range(1.8, 4.5))
 
 func spawn_wall():
+	if not bird: return
 	var wall: Node2D = wall_scene.instantiate()
 	$walls.add_child(wall)
 	wall.position.x = bird.position.x + 1600

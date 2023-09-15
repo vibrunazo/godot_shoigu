@@ -11,3 +11,8 @@ func _ready():
 func _on_area_score_body_entered(body):
 	if body is Bird:
 		Game.game_ref.add_score()
+
+
+func _on_hit_body_entered(body):
+	if body is Bird:
+		body.die()

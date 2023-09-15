@@ -10,6 +10,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not target: return
 	position.x = target.global_position.x + 300
 
 func _on_area_2d_body_entered(body):

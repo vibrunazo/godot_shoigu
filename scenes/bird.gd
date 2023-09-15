@@ -42,8 +42,20 @@ func flap():
 
 func looped():
 	anim.stop()
+	if state == 2: return
 	flap_up = !flap_up
 	if flap_up:
 		anim.play()
 	else:
 		anim.play("default", -4, true)
+
+func die():
+	if state != 1: return
+	state = 2
+	angular_velocity = -8
+
+
+func _on_collision(body):
+	print('collide with %s' % body)
+	if body is Floor or body.get_parent() is Wall:
+		die()
