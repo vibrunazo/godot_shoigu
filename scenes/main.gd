@@ -7,21 +7,29 @@ class_name Game
 
 func _ready():
 	print('game ini')
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(5).timeout
 	$SpawnTimer.start()
 
 
 func _on_spawn_timer_timeout():
 	spawn_wall()
-	$SpawnTimer.start(randf_range(1.5, 5))
+	$SpawnTimer.start(randf_range(1.6, 4.5))
 	
 
 func spawn_wall():
 	var wall: Node2D = wall_scene.instantiate()
 	$walls.add_child(wall)
-	wall.position.x = bird.position.x + 800
-	wall.position.y += randf_range(-400, 400) + 400
+	wall.position.x = bird.position.x + 1600
+	wall.position.y += randf_range(-350, 400) + 400
+
+func _unhandled_key_input(event):
+	if event.is_action_pressed("ui_toggle_fullscreen"):
+		toggle_fullscreen()
 
 
-func _on_start_timer_timeout():
-	pass # Replace with function body.
+func toggle_fullscreen():
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		
