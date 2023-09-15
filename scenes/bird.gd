@@ -10,6 +10,7 @@ var flap_up: bool = true
 @onready var anim: AnimatedSprite2D = $Anim
 var state: int = 0
 var ini_gravity: float = 1
+signal died
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,9 +54,9 @@ func die():
 	if state != 1: return
 	state = 2
 	angular_velocity = -8
+	died.emit()
 
 
 func _on_collision(body):
-	print('collide with %s' % body)
 	if body is Floor or body.get_parent() is Wall:
 		die()

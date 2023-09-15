@@ -14,8 +14,18 @@ func _init():
 
 func _ready():
 	print('game ini')
+	if bird:
+		bird.died.connect(_on_bird_died)
 	await get_tree().create_timer(5).timeout
 	$SpawnTimer.start()
+
+func _on_bird_died():
+	print('bird dead')
+	await get_tree().create_timer(5).timeout
+	reset()
+
+func reset():
+	get_tree().reload_current_scene()
 
 func _on_spawn_timer_timeout():
 	spawn_wall()
