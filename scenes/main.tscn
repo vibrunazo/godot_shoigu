@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://66fvugahhf8y"]
+[gd_scene load_steps=7 format=3 uid="uid://66fvugahhf8y"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_cl7ne"]
 [ext_resource type="PackedScene" uid="uid://bk7nyxujsjke" path="res://scenes/bird.tscn" id="1_ibgmi"]
 [ext_resource type="PackedScene" uid="uid://mlc87t4e6eux" path="res://scenes/floor.tscn" id="2_dih4j"]
 [ext_resource type="PackedScene" uid="uid://bhs4c1k8o4nvs" path="res://scenes/wall.tscn" id="2_o1q4m"]
 [ext_resource type="PackedScene" uid="uid://dxpoilp5kco28" path="res://scenes/game_cam.tscn" id="3_5uk06"]
+[ext_resource type="PackedScene" uid="uid://d37s1mtotb1wn" path="res://scenes/hud.tscn" id="6_21d2y"]
 
-[node name="Main" type="Control" node_paths=PackedStringArray("bird")]
+[node name="Main" type="Control" node_paths=PackedStringArray("bird", "hud")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,10 +17,11 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_cl7ne")
 bird = NodePath("Bird")
+hud = NodePath("UI/HUD")
 wall_scene = ExtResource("2_o1q4m")
 
 [node name="Bird" parent="." instance=ExtResource("1_ibgmi")]
-position = Vector2(487, 191)
+position = Vector2(512, 384)
 
 [node name="GameCam" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_5uk06")]
 position = Vector2(600, 544)
@@ -61,5 +63,9 @@ position = Vector2(1728, 960)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("6_21d2y")]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

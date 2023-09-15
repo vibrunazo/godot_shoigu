@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhs4c1k8o4nvs"]
+[gd_scene load_steps=4 format=3 uid="uid://bhs4c1k8o4nvs"]
 
 [ext_resource type="Script" path="res://scenes/wall.gd" id="1_hg4se"]
 [ext_resource type="Texture2D" uid="uid://ctfb4tij6o4na" path="res://assets/tex/wall.png" id="1_isrp6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48qyt"]
+size = Vector2(64, 256)
 
 [node name="Wall" type="Node2D"]
 script = ExtResource("1_hg4se")
@@ -22,3 +25,11 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_isrp6")
 region_enabled = true
 region_rect = Rect2(0, 0, 256, 1536)
+
+[node name="AreaScore" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaScore"]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_48qyt")
+
+[connection signal="body_entered" from="AreaScore" to="." method="_on_area_score_body_entered"]

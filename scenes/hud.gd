@@ -1,17 +1,16 @@
-extends Camera2D
+extends Control
 
-@export var target: Node2D
-
+class_name Hud
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	set_score(0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.x = target.global_position.x + 300
+	pass
 
-func _on_area_2d_body_entered(body):
-	if body is Floor:
-		body.reset()
+func set_score(new_score: int):
+	%ScoreLabel.text = 'Score [b]%d[/b]' % new_score
