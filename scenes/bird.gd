@@ -4,6 +4,7 @@ extends RigidBody2D
 class_name Bird
 
 @export var flap_power = 350
+@export var flap_up_bonus = 220
 @export var speed = 200
 
 var flap_up: bool = true
@@ -40,7 +41,10 @@ func _unhandled_input(event):
 
 
 func flap():
-	linear_velocity.y = -flap_power
+	var flap_y = flap_power
+	if linear_velocity.y < 0:
+		flap_y += flap_up_bonus
+	linear_velocity.y = - flap_y
 	linear_velocity.x = speed
 	$AudioFlap.play()
 
