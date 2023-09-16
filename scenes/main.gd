@@ -20,15 +20,21 @@ func _init():
 
 func _ready():
 	state = STATE.INI
+	$AudioMusic.volume_db = -60
+	music_fade_in()
 	if bird:
 		bird.died.connect(_on_bird_died)
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(3.4).timeout
 	play()
 
 func play():
 	state = STATE.PLAY
 	bird.play()
 	$SpawnTimer.start()
+
+func music_fade_in():
+	var tween = create_tween()
+	tween.tween_property($AudioMusic, "volume_db", -6, 2)
 
 func _on_bird_died():
 	print('bird dead')
