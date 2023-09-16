@@ -15,6 +15,7 @@ enum STATE {
 	DEAD
 }
 var ini_gravity: float = 1
+var last_hit: int = Time.get_ticks_msec()
 signal died
 
 # Called when the node enters the scene tree for the first time.
@@ -41,6 +42,7 @@ func _unhandled_input(event):
 func flap():
 	linear_velocity.y = -flap_power
 	linear_velocity.x = speed
+	$AudioFlap.play()
 
 
 func looped():
@@ -51,6 +53,13 @@ func looped():
 		anim.play()
 	else:
 		anim.play("default", -4, true)
+		
+
+func hit_wall():
+	if Time.get_ticks_msec() - last_hit > 150:
+		$AudioHit.play()
+		last_hit = Time.get_ticks_msec()
+	die()
 
 func die():
 	if state != 1: return
@@ -61,4 +70,4 @@ func die():
 
 func _on_collision(body):
 	if body is Floor or body.get_parent() is Wall:
-		die()
+		hit_wall()

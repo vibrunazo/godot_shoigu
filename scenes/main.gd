@@ -34,7 +34,7 @@ func play():
 
 func music_fade_in():
 	var tween = create_tween()
-	tween.tween_property($AudioMusic, "volume_db", -6, 2)
+	tween.tween_property($AudioMusic, "volume_db", -12, 2)
 
 func _on_bird_died():
 	print('bird dead')

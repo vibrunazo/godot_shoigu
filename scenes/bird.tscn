@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bk7nyxujsjke"]
+[gd_scene load_steps=30 format=3 uid="uid://bk7nyxujsjke"]
 
 [ext_resource type="Script" path="res://scenes/bird.gd" id="1_1g6im"]
 [ext_resource type="Texture2D" uid="uid://bkd0gjyf8bi5g" path="res://assets/tex/shoigu/image00.png" id="2_eyq7j"]
@@ -17,6 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://cb5o6k0heixnq" path="res://assets/tex/shoigu/image13.png" id="15_yfqm0"]
 [ext_resource type="Texture2D" uid="uid://cxx6bakgtrhmu" path="res://assets/tex/shoigu/image14.png" id="16_vatfn"]
 [ext_resource type="Texture2D" uid="uid://cli0vocagx7rj" path="res://assets/tex/shoigu/image15.png" id="17_obkrj"]
+[ext_resource type="AudioStream" uid="uid://c0ilyl23egngj" path="res://assets/audio/cloth3.ogg" id="18_fm7si"]
+[ext_resource type="AudioStream" uid="uid://d1nk8i84gj6yo" path="res://assets/audio/cloth2.ogg" id="18_vpm7j"]
+[ext_resource type="AudioStream" uid="uid://bs4tjubvnvdcj" path="res://assets/audio/qubodupPunch03.ogg" id="19_hsxep"]
+[ext_resource type="AudioStream" uid="uid://bghvhj6usw6i1" path="res://assets/audio/qubodupPunch04.ogg" id="19_xtc6k"]
+[ext_resource type="AudioStream" uid="uid://6img3grpwvuv" path="res://assets/audio/cloth4.ogg" id="20_5xgil"]
+[ext_resource type="AudioStream" uid="uid://deaxtcsvvnd3s" path="res://assets/audio/qubodupPunch05.ogg" id="20_r7geq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y023a"]
 animations = [{
@@ -85,6 +91,25 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4bwl"]
 size = Vector2(87, 127)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c54ey"]
+streams_count = 3
+stream_0/stream = ExtResource("18_vpm7j")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("18_fm7si")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("20_5xgil")
+stream_2/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t7a5m"]
+streams_count = 3
+playback_mode = 1
+stream_0/stream = ExtResource("19_hsxep")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("19_xtc6k")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("20_r7geq")
+stream_2/weight = 1.0
+
 [node name="Bird" type="RigidBody2D"]
 gravity_scale = 0.7
 max_contacts_reported = 5
@@ -105,5 +130,11 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 51.5)
 shape = SubResource("RectangleShape2D_t4bwl")
+
+[node name="AudioFlap" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_c54ey")
+
+[node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_t7a5m")
 
 [connection signal="body_entered" from="." to="." method="_on_collision"]
