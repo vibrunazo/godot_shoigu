@@ -8,19 +8,32 @@ class_name Game
 
 static var game_ref: Game
 var score: int = 0
+var state: STATE = STATE.INI
+enum STATE {
+	INI,
+	PLAY,
+	GAME_OVER
+}
 
 func _init():
 	Game.game_ref = self
 
 func _ready():
-	print('game ini')
+	state = STATE.INI
 	if bird:
 		bird.died.connect(_on_bird_died)
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(3).timeout
+	play()
+
+func play():
+	state = STATE.PLAY
+	bird.play()
 	$SpawnTimer.start()
 
 func _on_bird_died():
 	print('bird dead')
+	state = STATE.GAME_OVER
+	$SpawnTimer.stop()
 	await get_tree().create_timer(5).timeout
 	reset()
 
@@ -28,6 +41,7 @@ func reset():
 	get_tree().reload_current_scene()
 
 func _on_spawn_timer_timeout():
+	if state == STATE.GAME_OVER: return
 	spawn_wall()
 	$SpawnTimer.start(randf_range(1.8, 4.5))
 
@@ -49,6 +63,7 @@ func toggle_fullscreen():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		
 func add_score():
+	if state != STATE.PLAY: return
 	score += 1
 	print('scored: %d' % score)
 	if hud:

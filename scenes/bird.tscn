@@ -83,10 +83,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4bwl"]
-size = Vector2(89, 179)
+size = Vector2(87, 127)
 
 [node name="Bird" type="RigidBody2D"]
-gravity_scale = 0.8
+gravity_scale = 0.7
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1_1g6im")
@@ -103,7 +103,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.5, 25.5)
+position = Vector2(-1.5, 51.5)
 shape = SubResource("RectangleShape2D_t4bwl")
 
 [connection signal="body_entered" from="." to="." method="_on_collision"]

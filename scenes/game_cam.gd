@@ -10,9 +10,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if not target: return
+	if not target or target.state == 2: return
 	position.x = target.global_position.x + 300
 
 func _on_area_2d_body_entered(body):
 	if body is Floor:
 		body.reset()
+	if body.get_parent() is Wall:
+		body.get_parent().queue_free()

@@ -3,12 +3,17 @@ extends RigidBody2D
 
 class_name Bird
 
-@export var flap_power = 400
+@export var flap_power = 350
 @export var speed = 200
 
 var flap_up: bool = true
 @onready var anim: AnimatedSprite2D = $Anim
-var state: int = 0
+var state: STATE = STATE.INI
+enum STATE {
+	INI,
+	PLAY,
+	DEAD
+}
 var ini_gravity: float = 1
 signal died
 
@@ -18,14 +23,11 @@ func _ready():
 	linear_velocity.x = speed
 	ini_gravity = gravity_scale
 	gravity_scale = 0
-	await get_tree().create_timer(2).timeout
-	state = 1
+
+func play():
+	state = STATE.PLAY
 	gravity_scale = ini_gravity
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.4
-func _process(delta):
-	pass
 
 func _unhandled_input(event):
 	if state != 1: return
@@ -43,7 +45,7 @@ func flap():
 
 func looped():
 	anim.stop()
-	if state == 2: return
+	if state == STATE.DEAD: return
 	flap_up = !flap_up
 	if flap_up:
 		anim.play()
@@ -52,8 +54,8 @@ func looped():
 
 func die():
 	if state != 1: return
-	state = 2
-	angular_velocity = -8
+	state = STATE.DEAD
+	angular_velocity = -16
 	died.emit()
 
 
