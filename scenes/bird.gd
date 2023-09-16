@@ -32,9 +32,9 @@ func play():
 
 func _unhandled_input(event):
 	if state != 1: return
-	if event is InputEventMouseButton and event.is_pressed():
-		flap()
-	if event.is_action_pressed("ui_accept"):
+#	if event is InputEventMouseButton and event.is_pressed():
+#		flap()
+	if event.is_action_pressed("flap"):
 		flap()
 		
 
@@ -56,7 +56,7 @@ func looped():
 		
 
 func hit_wall():
-	if Time.get_ticks_msec() - last_hit > 150:
+	if Time.get_ticks_msec() - last_hit > 180:
 		$AudioHit.play()
 		last_hit = Time.get_ticks_msec()
 	die()

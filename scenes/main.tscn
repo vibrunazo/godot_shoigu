@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bi0txdjhgkeda" path="res://assets/audio/music/Egyptian orchestra - Russian Anthem.mp3" id="7_vddb2"]
 
 [node name="Main" type="Control" node_paths=PackedStringArray("bird", "hud")]
+process_mode = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

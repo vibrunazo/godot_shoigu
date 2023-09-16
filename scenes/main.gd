@@ -58,10 +58,6 @@ func spawn_wall():
 	wall.position.x = bird.position.x + 1600
 	wall.position.y += randf_range(-350, 400) + 400
 
-func _unhandled_key_input(event):
-	if event.is_action_pressed("ui_toggle_fullscreen"):
-		toggle_fullscreen()
-
 func toggle_fullscreen():
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
@@ -75,3 +71,5 @@ func add_score():
 	if hud:
 		hud.set_score(score)
 		
+func pause_clicked():
+	get_tree().paused = !get_tree().paused
