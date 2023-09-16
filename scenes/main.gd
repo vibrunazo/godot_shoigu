@@ -73,3 +73,10 @@ func add_score():
 		
 func pause_clicked():
 	get_tree().paused = !get_tree().paused
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_IN:
+		print("focus in")
+	elif what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT:
+		print("focus out")
+		pause_clicked()
