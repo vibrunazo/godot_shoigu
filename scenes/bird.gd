@@ -21,10 +21,21 @@ signal died
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	anim.animation_looped.connect(looped)
+#	anim.animation_looped.connect(looped)
+	anim.animation_finished.connect(looped)
+#	anim.pause()
 	linear_velocity.x = speed
 	ini_gravity = gravity_scale
 	gravity_scale = 0
+
+func _process(delta):
+	if state != STATE.PLAY: return
+	var d = linear_velocity.y / 15
+	rot(d)
+
+func rot(new_rot):
+	anim.rotation_degrees = new_rot
+	$Col.rotation_degrees = new_rot
 
 func play():
 	state = STATE.PLAY
@@ -47,17 +58,19 @@ func flap():
 	linear_velocity.y = - flap_y
 	linear_velocity.x = speed
 	$AudioFlap.play()
+	anim.stop()
+	anim.play("default", -4, true)
+	flap_up = false
 
 
 func looped():
-	anim.stop()
+	anim.pause()
 	if state == STATE.DEAD: return
 	flap_up = !flap_up
 	if flap_up:
-		anim.play()
+		anim.play("default", 3)
 	else:
-		anim.play("default", -4, true)
-		
+		anim.play("default", -3, true)
 
 func hit_wall():
 	if Time.get_ticks_msec() - last_hit > 180:
@@ -69,6 +82,7 @@ func die():
 	if state != 1: return
 	state = STATE.DEAD
 	angular_velocity = -16
+	anim.stop()
 	died.emit()
 
 

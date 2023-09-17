@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bk7nyxujsjke"]
+[gd_scene load_steps=27 format=3 uid="uid://bk7nyxujsjke"]
 
 [ext_resource type="Script" path="res://scenes/bird.gd" id="1_1g6im"]
 [ext_resource type="Texture2D" uid="uid://bkd0gjyf8bi5g" path="res://assets/tex/shoigu/image00.png" id="2_eyq7j"]
@@ -42,7 +42,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_8bplh")
 }, {
-"duration": 1.0,
+"duration": 0.1,
 "texture": ExtResource("7_q2826")
 }, {
 "duration": 1.0,
@@ -60,7 +60,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_2kic4")
 }, {
-"duration": 1.0,
+"duration": 0.1,
 "texture": ExtResource("13_or86r")
 }, {
 "duration": 1.0,
@@ -75,24 +75,10 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("17_obkrj")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 30.0
 }]
-
-[sub_resource type="Animation" id="Animation_73s07"]
-resource_name = "flap"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_klm7l"]
-_data = {
-"flap": SubResource("Animation_73s07")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4bwl"]
-size = Vector2(87, 109)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qiydn"]
-size = Vector2(34, 58)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c54ey"]
 streams_count = 3
@@ -123,20 +109,10 @@ script = ExtResource("1_1g6im")
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_y023a")
 autoplay = "default"
-frame_progress = 0.256246
+frame = 15
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_klm7l")
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 52.5)
-shape = SubResource("RectangleShape2D_t4bwl")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(10, -31)
-shape = SubResource("RectangleShape2D_qiydn")
+[node name="Col" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(33, 106, -35, 98, -34, -2, -1, -56, 24, -53, 46, 2)
 
 [node name="AudioFlap" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_c54ey")
