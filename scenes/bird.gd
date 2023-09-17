@@ -3,7 +3,7 @@ extends RigidBody2D
 
 class_name Bird
 
-@export var flap_power = 350
+@export var flap_power = 300
 @export var flap_up_bonus = 220
 @export var speed = 200
 
