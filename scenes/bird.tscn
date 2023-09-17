@@ -89,10 +89,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4bwl"]
-size = Vector2(87, 127)
+size = Vector2(87, 109)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qiydn"]
-size = Vector2(34, 49)
+size = Vector2(34, 58)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c54ey"]
 streams_count = 3
@@ -131,11 +131,11 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 51.5)
+position = Vector2(-1.5, 52.5)
 shape = SubResource("RectangleShape2D_t4bwl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(10, -35.5)
+position = Vector2(10, -31)
 shape = SubResource("RectangleShape2D_qiydn")
 
 [node name="AudioFlap" type="AudioStreamPlayer2D" parent="."]
