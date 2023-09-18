@@ -215,6 +215,7 @@ justification_flags = 162
 layout_mode = 2
 
 [node name="RestartButton" parent="Panel/Mp/VBoxContainer/M2" instance=ExtResource("2_egubq")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Anim" type="AnimationPlayer" parent="."]
