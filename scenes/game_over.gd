@@ -10,6 +10,5 @@ func _ready():
 func start():
 	visible = true
 	$Anim.play("start")
-	var score = game.score
-	%LabelScore.text = "%d" % score
-	%LabelHigh.text = "%d" % score
+	%LabelScore.text = "%d" % game.score
+	%LabelHigh.text = "%d" % game.high

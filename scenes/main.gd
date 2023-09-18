@@ -9,6 +9,7 @@ class_name Game
 
 static var game_ref: Game
 var score: int = 0
+var high: int = 0
 # ellapsed time in seconds, updated at every spawn
 var time: float = 0
 var state: STATE = STATE.INI
@@ -17,12 +18,14 @@ enum STATE {
 	PLAY,
 	GAME_OVER
 }
+var config = ConfigFile.new()
 
 func _init():
 	Game.game_ref = self
 
 func _ready():
 	state = STATE.INI
+	load_game()
 	if bird:
 		bird.died.connect(_on_bird_died)
 	if ui:
@@ -46,10 +49,28 @@ func music_fade_out():
 	var tween = create_tween()
 	tween.tween_property($AudioMusic, "volume_db", -60, 2)
 
+func save_game():
+	# Store some values.
+	config.set_value("game", "high_score", high)
+	# Save it to a file (overwrite if already exists).
+	config.save("user://scores.cfg")
+
+func load_game():
+	# Load data from a file.
+	var err = config.load("user://scores.cfg")
+	# If the file didn't load, ignore it.
+	if err != OK:
+		return
+	high = config.get_value("game", "high_score", 0)
+	
+	
+
 func _on_bird_died():
 	print('bird dead')
 	state = STATE.GAME_OVER
 	$SpawnTimer.stop()
+	if score > high: high = score
+	save_game()
 	await get_tree().create_timer(3).timeout
 	on_game_over()
 
