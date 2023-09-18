@@ -1,35 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://lppr2slkcrxg"]
+[gd_scene load_steps=10 format=3 uid="uid://lppr2slkcrxg"]
 
 [ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_th7s2"]
 [ext_resource type="PackedScene" uid="uid://bf34mxuqysu74" path="res://scenes/restart_button.tscn" id="2_egubq"]
 [ext_resource type="Script" path="res://scenes/game_over.gd" id="2_n07wu"]
-
-[sub_resource type="Animation" id="Animation_cal3c"]
-resource_name = "start"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Panel:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
 
 [sub_resource type="Animation" id="Animation_ggfhu"]
 length = 0.001
@@ -58,10 +31,75 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_cal3c"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qeaij"]
 _data = {
 "RESET": SubResource("Animation_ggfhu"),
 "start": SubResource("Animation_cal3c")
+}
+
+[sub_resource type="Animation" id="Animation_5ryec"]
+resource_name = "glow"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/Mp/VBoxContainer/M1/VBoxContainer/Container/Mh/LabelNew:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 0.290196, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4b7lc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/Mp/VBoxContainer/M1/VBoxContainer/Container/Mh/LabelNew:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flkp6"]
+_data = {
+"RESET": SubResource("Animation_4b7lc"),
+"glow": SubResource("Animation_5ryec")
 }
 
 [node name="GameOver" type="Control"]
@@ -137,22 +175,41 @@ text = "10
 "
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Mp/VBoxContainer/M1/VBoxContainer"]
+[node name="Container" type="CenterContainer" parent="Panel/Mp/VBoxContainer/M1/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Mp/VBoxContainer/M1/VBoxContainer/Container"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/Mp/VBoxContainer/M1/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="Panel/Mp/VBoxContainer/M1/VBoxContainer/Container/HBoxContainer2"]
 layout_mode = 2
 text = "High "
 horizontal_alignment = 1
 
-[node name="LabelHigh" type="Label" parent="Panel/Mp/VBoxContainer/M1/VBoxContainer/HBoxContainer2"]
+[node name="LabelHigh" type="Label" parent="Panel/Mp/VBoxContainer/M1/VBoxContainer/Container/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.846, 0.9, 0.09, 1)
 text = "10
 "
 horizontal_alignment = 1
+
+[node name="Mh" type="Control" parent="Panel/Mp/VBoxContainer/M1/VBoxContainer/Container"]
+layout_mode = 2
+
+[node name="LabelNew" type="Label" parent="Panel/Mp/VBoxContainer/M1/VBoxContainer/Container/Mh"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = -233.0
+offset_top = -39.0
+offset_right = -103.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 36
+text = "new"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
 
 [node name="M2" type="MarginContainer" parent="Panel/Mp/VBoxContainer"]
 layout_mode = 2
@@ -163,4 +220,10 @@ layout_mode = 2
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_qeaij")
+}
+
+[node name="AnimNew" type="AnimationPlayer" parent="."]
+autoplay = "glow"
+libraries = {
+"": SubResource("AnimationLibrary_flkp6")
 }
