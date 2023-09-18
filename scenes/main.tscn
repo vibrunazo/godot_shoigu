@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://mlc87t4e6eux" path="res://scenes/floor.tscn" id="2_dih4j"]
 [ext_resource type="PackedScene" uid="uid://bhs4c1k8o4nvs" path="res://scenes/wall.tscn" id="2_o1q4m"]
 [ext_resource type="PackedScene" uid="uid://dxpoilp5kco28" path="res://scenes/game_cam.tscn" id="3_5uk06"]
-[ext_resource type="PackedScene" uid="uid://d37s1mtotb1wn" path="res://scenes/hud.tscn" id="6_21d2y"]
+[ext_resource type="PackedScene" uid="uid://7hmvg15ai08b" path="res://scenes/ui.tscn" id="6_w02nk"]
 [ext_resource type="AudioStream" uid="uid://bi0txdjhgkeda" path="res://assets/audio/music/Egyptian orchestra - Russian Anthem.mp3" id="7_vddb2"]
 
-[node name="Main" type="Control" node_paths=PackedStringArray("bird", "hud")]
+[node name="Main" type="Control" node_paths=PackedStringArray("bird", "ui")]
 process_mode = 1
 layout_mode = 3
 anchors_preset = 15
@@ -19,7 +19,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_cl7ne")
 bird = NodePath("Bird")
-hud = NodePath("UI/HUD")
+ui = NodePath("UI")
 wall_scene = ExtResource("2_o1q4m")
 
 [node name="Bird" parent="." instance=ExtResource("1_ibgmi")]
@@ -93,9 +93,7 @@ position = Vector2(1728, -192)
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="UI" instance=ExtResource("6_21d2y")]
+[node name="UI" parent="." instance=ExtResource("6_w02nk")]
 
 [node name="AudioMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_vddb2")

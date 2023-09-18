@@ -21,6 +21,9 @@ func _unhandled_key_input(event):
 func set_score(new_score: int):
 	%ScoreLabel.text = '[color=%s]Score[/color] [color=%s]%d[/color]' % [color_text, color_score, new_score]
 
+func end():
+	$Anim.play("end")
+
 
 func _on_button_pressed():
 	game.pause_clicked()

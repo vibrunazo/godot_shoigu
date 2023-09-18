@@ -1,4 +1,4 @@
-@icon("res://assets/tex/shoigu/image10.png")
+#@icon("res://assets/tex/shoigu/image10.png")
 extends RigidBody2D
 
 class_name Bird
@@ -52,13 +52,10 @@ func _unhandled_input(event):
 
 
 func flap():
-	var flap_y = flap_power
-	if linear_velocity.y < 0:
-		flap_y += flap_up_bonus
-	if linear_velocity.y < -(flap_power + flap_up_bonus / 2):
-		flap_y += flap_up_bonus
-	print('flapy: %s' % flap_y)
-	linear_velocity.y = - flap_y
+	if linear_velocity.y > 0:
+		linear_velocity.y = - flap_power
+	else: 
+		linear_velocity.y -= flap_up_bonus
 	linear_velocity.x = speed
 	$AudioFlap.play()
 	anim.stop()

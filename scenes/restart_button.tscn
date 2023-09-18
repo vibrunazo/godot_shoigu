@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf34mxuqysu74"]
+
+[ext_resource type="Script" path="res://scenes/restart_button.gd" id="1_bjwke"]
+[ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_ra0o6"]
+
+[node name="RestartButton" type="Button"]
+custom_minimum_size = Vector2(128, 128)
+size_flags_horizontal = 4
+theme = ExtResource("1_ra0o6")
+text = "Restart"
+script = ExtResource("1_bjwke")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
