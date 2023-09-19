@@ -18,6 +18,11 @@ enum STATE {
 	PLAY,
 	GAME_OVER
 }
+var music_volume_min: = -64
+var music_volume_max: = -12
+var music_volume: = -12
+var music_enabled: = true
+var music_tween: Tween
 var config = ConfigFile.new()
 
 func _init():
@@ -42,12 +47,24 @@ func play():
 	$SpawnTimer.start()
 
 func music_fade_in():
-	var tween = create_tween()
-	tween.tween_property($AudioMusic, "volume_db", -12, 2)
+	music_tween = create_tween()
+	music_tween.tween_property($AudioMusic, "volume_db", music_volume, 2)
 
 func music_fade_out():
-	var tween = create_tween()
-	tween.tween_property($AudioMusic, "volume_db", -60, 2)
+	music_tween = create_tween()
+	music_tween.tween_property($AudioMusic, "volume_db", music_volume_min, 2)
+
+func toggle_music(value: bool):
+	music_enabled = value
+	if value:
+		music_volume = music_volume_max
+	else:
+		music_volume = music_volume_min
+	if music_tween:
+		music_tween.stop()
+	$AudioMusic.volume_db = music_volume
+	config.set_value("settings", "music", value)
+	config.save("user://scores.cfg")
 
 func save_game():
 	# Store some values.
@@ -63,6 +80,8 @@ func load_game():
 		return
 	high = config.get_value("game", "high_score", 0)
 	Global.update_score.emit()
+	toggle_music(config.get_value("settings", "music", true))
+	Global.game_loaded.emit()
 	
 	
 
@@ -80,6 +99,7 @@ func on_game_over():
 	Global.show_game_over.emit()
 
 func reset():
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_spawn_timer_timeout():

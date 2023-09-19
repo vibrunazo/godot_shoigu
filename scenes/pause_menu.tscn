@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8134wfsrr2om"]
+[gd_scene load_steps=10 format=3 uid="uid://c8134wfsrr2om"]
 
 [ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_atw58"]
 [ext_resource type="PackedScene" uid="uid://bldgqq7r0ci60" path="res://scenes/score_panel.tscn" id="2_b7xya"]
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="2_lewfo"]
 [ext_resource type="PackedScene" uid="uid://bf34mxuqysu74" path="res://scenes/restart_button.tscn" id="3_4xd6h"]
+[ext_resource type="PackedScene" uid="uid://bh10i25dtkwn" path="res://scenes/music_button.tscn" id="4_l05y5"]
 
 [sub_resource type="Animation" id="Animation_6hv2s"]
 resource_name = "start"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,7 +28,7 @@ tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -61,6 +63,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_7inys"]
 resource_name = "stop"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -68,7 +71,7 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -80,7 +83,7 @@ tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -139,6 +142,21 @@ text = "Paused"
 horizontal_alignment = 1
 
 [node name="ScorePanel" parent="Panel/Mp/VBoxContainer" instance=ExtResource("2_b7xya")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Mp/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_atw58")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Mp/VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MusicButton" parent="Panel/Mp/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("4_l05y5")]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Panel/Mp/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
 [node name="RestartButton" parent="Panel/Mp/VBoxContainer" instance=ExtResource("3_4xd6h")]

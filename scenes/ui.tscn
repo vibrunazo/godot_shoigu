@@ -14,8 +14,3 @@ script = ExtResource("1_hfdkf")
 visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_2t2as")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5

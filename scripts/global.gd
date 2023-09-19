@@ -4,6 +4,7 @@ signal show_pause
 signal hide_pause
 signal show_game_over
 signal update_score
+signal game_loaded
 
 
 # Called when the node enters the scene tree for the first time.
