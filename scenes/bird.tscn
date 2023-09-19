@@ -116,8 +116,10 @@ polygon = PackedVector2Array(34, 99, -34, 95, -34, -2, -1, -48, 24, -48, 42, 0)
 
 [node name="AudioFlap" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_c54ey")
+bus = &"Sfx"
 
 [node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_t7a5m")
+bus = &"Sfx"
 
 [connection signal="body_entered" from="." to="." method="_on_collision"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://mgn0121equwy"]
+
+[ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_k8lii"]
+[ext_resource type="Script" path="res://scenes/audio_button.gd" id="2_focpe"]
+
+[node name="AudioButton" type="CheckButton"]
+theme = ExtResource("1_k8lii")
+text = "🕪	"
+flat = true
+script = ExtResource("2_focpe")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

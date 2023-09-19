@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bldgqq7r0ci60" path="res://scenes/score_panel.tscn" id="2_b7xya"]
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="2_lewfo"]
 [ext_resource type="PackedScene" uid="uid://bf34mxuqysu74" path="res://scenes/restart_button.tscn" id="3_4xd6h"]
-[ext_resource type="PackedScene" uid="uid://bh10i25dtkwn" path="res://scenes/music_button.tscn" id="4_l05y5"]
+[ext_resource type="PackedScene" uid="uid://envk87qpssjb" path="res://scenes/settings_panel.tscn" id="4_slv2t"]
 
 [sub_resource type="Animation" id="Animation_6hv2s"]
 resource_name = "start"
@@ -144,15 +144,7 @@ horizontal_alignment = 1
 [node name="ScorePanel" parent="Panel/Mp/VBoxContainer" instance=ExtResource("2_b7xya")]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/Mp/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_atw58")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Mp/VBoxContainer/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="MusicButton" parent="Panel/Mp/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("4_l05y5")]
+[node name="SettingsPanel" parent="Panel/Mp/VBoxContainer" instance=ExtResource("4_slv2t")]
 layout_mode = 2
 
 [node name="Control" type="Control" parent="Panel/Mp/VBoxContainer"]
