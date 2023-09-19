@@ -146,6 +146,7 @@ func add_score():
 		
 func pause_clicked():
 	get_tree().paused = !get_tree().paused
+	if state == STATE.GAME_OVER: return
 	if get_tree().paused:
 		Global.show_pause.emit()
 	else:
