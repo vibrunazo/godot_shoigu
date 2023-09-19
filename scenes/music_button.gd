@@ -7,8 +7,6 @@ class_name MusicButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-	Global.game_loaded.connect(update)
 	Global.audio_updated.connect(update)
 
 
