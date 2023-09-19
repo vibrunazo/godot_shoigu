@@ -62,6 +62,7 @@ func load_game():
 	if err != OK:
 		return
 	high = config.get_value("game", "high_score", 0)
+	Global.update_score.emit()
 	
 	
 
@@ -76,7 +77,7 @@ func _on_bird_died():
 
 func on_game_over():
 	music_fade_out()
-	ui.on_game_over()
+	Global.show_game_over.emit()
 
 func reset():
 	get_tree().reload_current_scene()
@@ -110,11 +111,16 @@ func add_score():
 	if state != STATE.PLAY: return
 	score += 1
 	print('scored: %d' % score)
-	if hud:
-		hud.set_score(score)
+	Global.update_score.emit()
+#	if hud:
+#		hud.set_score(score)
 		
 func pause_clicked():
 	get_tree().paused = !get_tree().paused
+	if get_tree().paused:
+		Global.show_pause.emit()
+	else:
+		Global.hide_pause.emit()
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_IN:

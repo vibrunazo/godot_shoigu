@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://7hmvg15ai08b"]
+[gd_scene load_steps=5 format=3 uid="uid://7hmvg15ai08b"]
 
 [ext_resource type="Script" path="res://scenes/ui.gd" id="1_hfdkf"]
 [ext_resource type="PackedScene" uid="uid://d37s1mtotb1wn" path="res://scenes/hud.tscn" id="1_yycgk"]
 [ext_resource type="PackedScene" uid="uid://lppr2slkcrxg" path="res://scenes/game_over.tscn" id="2_tqfle"]
+[ext_resource type="PackedScene" uid="uid://c8134wfsrr2om" path="res://scenes/pause_menu.tscn" id="4_2t2as"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_hfdkf")
@@ -11,3 +12,10 @@ script = ExtResource("1_hfdkf")
 
 [node name="GameOver" parent="." instance=ExtResource("2_tqfle")]
 visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_2t2as")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
