@@ -7,6 +7,10 @@ class_name Game
 @export var wall_scene: PackedScene
 @onready var hud: Hud
 
+
+# saved at
+# %APPDATA%\Godot\
+var SAVE_PATH := "user://config.cfg"
 static var game_ref: Game
 var score: int = 0
 var high: int = 0
@@ -71,18 +75,18 @@ func toggle_audio(value: bool):
 func toggle_bus(bus: String, value: bool):
 	AudioServer.set_bus_mute(AudioServer.get_bus_index(bus), !value)
 	config.set_value("settings", bus.to_lower(), value)
-	config.save("user://scores.cfg")
+	config.save(SAVE_PATH)
 	Global.audio_updated.emit()
 
 func save_game():
 	# Store some values.
 	config.set_value("game", "high_score", high)
 	# Save it to a file (overwrite if already exists).
-	config.save("user://scores.cfg")
+	config.save(SAVE_PATH)
 
 func load_game():
 	# Load data from a file.
-	var err = config.load("user://scores.cfg")
+	var err = config.load(SAVE_PATH)
 	# If the file didn't load, ignore it.
 	if err != OK:
 		return
