@@ -15,9 +15,10 @@ func _ready():
 #func _process(delta):
 #	print($AudioMusicLoop.get_playback_position())
 	
-func _input(event):
+func _unhandled_input(event):
 	if state != 0: return
 	if event.is_action("ui_accept") || event.is_action("flap"):
+		%ButtonSettings.hide()
 		play()
 
 func play():
@@ -52,3 +53,15 @@ func music_fade_in(widget, duration = 2):
 func music_fade_out(widget, duration = 2):
 	var tween = create_tween()
 	tween.tween_property(widget, "volume_db", -60, duration)
+
+
+func _on_button_pressed():
+	$AudioClick.play()
+	if state == 0:
+		%IntroMenu.visible = true
+		get_tree().paused = true
+		state = 2
+	elif state == 2:
+		%IntroMenu.visible = false
+		get_tree().paused = false
+		state = 0

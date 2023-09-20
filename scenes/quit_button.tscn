@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddtssxoh7sosp"]
+
+[ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_p4lae"]
+[ext_resource type="Script" path="res://scenes/quit_button.gd" id="2_y2kej"]
+
+[node name="QuitButton" type="Button"]
+custom_minimum_size = Vector2(128, 128)
+size_flags_horizontal = 4
+theme = ExtResource("1_p4lae")
+text = "Exit"
+script = ExtResource("2_y2kej")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://djbcofb3nw6fs"]
+[gd_scene load_steps=21 format=3 uid="uid://djbcofb3nw6fs"]
 
 [ext_resource type="Script" path="res://scenes/opening.gd" id="1_054iu"]
 [ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_gi4hl"]
 [ext_resource type="VideoStream" path="res://assets/movie/shoigopening.ogv" id="1_hrjeu"]
 [ext_resource type="VideoStream" path="res://assets/movie/shoigu talk loop.ogv" id="3_pbps2"]
+[ext_resource type="PackedScene" uid="uid://b13bmb853ce7g" path="res://scenes/intro_menu.tscn" id="6_11xkl"]
 [ext_resource type="PackedScene" uid="uid://efrynet2vbbx" path="res://scenes/bird_intro.tscn" id="6_r0152"]
 [ext_resource type="AudioStream" uid="uid://c3rx16dkfnf8v" path="res://assets/audio/music/Shooting Stars loop.ogg" id="7_hncdu"]
 [ext_resource type="AudioStream" uid="uid://buoukjs4f34v3" path="res://assets/audio/music/Shooting Stars introfast.ogg" id="8_qr2gm"]
@@ -539,6 +540,7 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("1_hrjeu")
+bus = &"Sfx"
 
 [node name="VideoTalkLoop" type="VideoStreamPlayer" parent="."]
 anchors_preset = 8
@@ -556,6 +558,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stream = ExtResource("3_pbps2")
 autoplay = true
+bus = &"Sfx"
 
 [node name="BirdIntro" parent="." instance=ExtResource("6_r0152")]
 position = Vector2(759, 549)
@@ -567,6 +570,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = ExtResource("1_gi4hl")
 
 [node name="MarginContainer" type="MarginContainer" parent="Ui"]
@@ -627,6 +631,35 @@ pivot_offset = Vector2(183, 67.5)
 text = "Will we win?"
 horizontal_alignment = 1
 
+[node name="MarginContainer2" type="MarginContainer" parent="Ui"]
+process_mode = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+
+[node name="ButtonSettings" type="Button" parent="Ui/MarginContainer2"]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.0627451, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.835294)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 64
+text = "II"
+
+[node name="IntroMenu" parent="Ui" instance=ExtResource("6_11xkl")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = -171.0
+offset_top = -221.0
+offset_right = 171.0
+offset_bottom = 221.0
+
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_jsg2i")
@@ -659,3 +692,6 @@ libraries = {
 
 [node name="AudioClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_l1rpx")
+bus = &"Sfx"
+
+[connection signal="pressed" from="Ui/MarginContainer2/ButtonSettings" to="." method="_on_button_pressed"]
