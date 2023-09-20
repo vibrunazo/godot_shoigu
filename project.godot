@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Flappy Shoigu"
-run/main_scene="res://scenes/main.tscn"
+config/description="It's like Flappy Bird. But there's a nuance."
+run/main_scene="res://scenes/opening.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 

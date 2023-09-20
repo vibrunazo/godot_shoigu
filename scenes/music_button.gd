@@ -9,7 +9,6 @@ class_name MusicButton
 func _ready():
 	Global.audio_updated.connect(update)
 
-
 func update():
 	button_pressed = game.music_enabled and game.audio_enabled
 	disabled = !game.audio_enabled

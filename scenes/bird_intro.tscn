@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://efrynet2vbbx"]
+
+[ext_resource type="PackedScene" uid="uid://bk7nyxujsjke" path="res://scenes/bird.tscn" id="1_tnmmn"]
+
+[node name="BirdIntro" instance=ExtResource("1_tnmmn")]
+speed = 0
+
+[node name="Anim" parent="." index="0"]
+scale = Vector2(1, 1)
+
+[node name="Col" parent="." index="1"]
+visible = false

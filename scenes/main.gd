@@ -134,12 +134,6 @@ func spawn_wall():
 	wall.position.x = bird.position.x + 1600
 	wall.position.y += randf_range(-350, 400) + 400
 
-func toggle_fullscreen():
-	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		
 func add_score():
 	if state != STATE.PLAY: return
 	score += 1

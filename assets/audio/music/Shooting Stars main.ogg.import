@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmaw4ewqjsy8y"
+path="res://.godot/imported/Shooting Stars main.ogg-88b9c944a439bf2fbc0b338a5cdacdc6.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/Shooting Stars main.ogg"
+dest_files=["res://.godot/imported/Shooting Stars main.ogg-88b9c944a439bf2fbc0b338a5cdacdc6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -14,11 +14,9 @@ func _ready():
 
 
 func _unhandled_key_input(event):
-	if event.is_action_pressed("ui_toggle_fullscreen"):
-		game.toggle_fullscreen()
 	if event.is_action_pressed("ui_pause"):
 		game.pause_clicked()
-
+		
 func update_score():
 	set_score(game.score)
 
