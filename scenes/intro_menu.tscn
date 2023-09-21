@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ddtssxoh7sosp" path="res://scenes/quit_button.tscn" id="3_rt6pw"]
 
 [node name="IntroMenu" type="PanelContainer"]
+process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

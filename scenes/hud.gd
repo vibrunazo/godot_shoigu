@@ -4,11 +4,10 @@ class_name Hud
 
 var color_text: String = 'ffc'
 var color_score: String = 'ff3'
-var game: Game
+@onready var game: Game = Game.game_ref
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	game = Game.game_ref
 	set_score(0)
 	Global.update_score.connect(update_score)
 

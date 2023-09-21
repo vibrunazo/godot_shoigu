@@ -8,12 +8,8 @@ class_name Game
 @onready var hud: Hud
 
 
-# saved at
-# %APPDATA%\Godot\
-var SAVE_PATH := "user://config.cfg"
 static var game_ref: Game
 var score: int = 0
-var high: int = 0
 # ellapsed time in seconds, updated at every spawn
 var time: float = 0
 var state: STATE = STATE.INI
@@ -22,14 +18,7 @@ enum STATE {
 	PLAY,
 	GAME_OVER
 }
-var music_volume_min: = -64
-var music_volume_max: = -12
-var music_volume: = -12
-var music_enabled: = true
 var music_tween: Tween
-var sfx_enabled: = true
-var audio_enabled: = true
-var config = ConfigFile.new()
 
 func _init():
 	Game.game_ref = self
@@ -52,57 +41,25 @@ func play():
 	bird.play()
 	$SpawnTimer.start()
 
+func load_game():
+	Global.load_game()
+
+func save_game():
+	Global.save_game()
+
 func music_fade_in():
 	music_tween = create_tween()
-	music_tween.tween_property($AudioMusic, "volume_db", music_volume, 2)
+	music_tween.tween_property($AudioMusic, "volume_db", Global.music_volume, 2)
 
 func music_fade_out():
 	music_tween = create_tween()
-	music_tween.tween_property($AudioMusic, "volume_db", music_volume_min, 2)
-
-func toggle_music(value: bool):
-	music_enabled = value
-	toggle_bus("Music", value)
-
-func toggle_sfx(value: bool):
-	sfx_enabled = value
-	toggle_bus("Sfx", value)
-
-func toggle_audio(value: bool):
-	audio_enabled = value
-	toggle_bus("Master", value)
-
-func toggle_bus(bus: String, value: bool):
-	AudioServer.set_bus_mute(AudioServer.get_bus_index(bus), !value)
-	config.set_value("settings", bus.to_lower(), value)
-	config.save(SAVE_PATH)
-	Global.audio_updated.emit()
-
-func save_game():
-	# Store some values.
-	config.set_value("game", "high_score", high)
-	# Save it to a file (overwrite if already exists).
-	config.save(SAVE_PATH)
-
-func load_game():
-	# Load data from a file.
-	var err = config.load(SAVE_PATH)
-	# If the file didn't load, ignore it.
-	if err != OK:
-		return
-	high = config.get_value("game", "high_score", 0)
-	Global.update_score.emit()
-	toggle_audio(config.get_value("settings", "master", true))
-	toggle_music(config.get_value("settings", "music", true))
-	Global.game_loaded.emit()
-	
-	
+	music_tween.tween_property($AudioMusic, "volume_db", Global.music_volume_min, 2)
 
 func _on_bird_died():
 	print('bird dead')
 	state = STATE.GAME_OVER
 	$SpawnTimer.stop()
-	if score > high: high = score
+	if score > Global.high: Global.high = score
 	save_game()
 	await get_tree().create_timer(3).timeout
 	on_game_over()
@@ -139,8 +96,6 @@ func add_score():
 	score += 1
 	print('scored: %d' % score)
 	Global.update_score.emit()
-#	if hud:
-#		hud.set_score(score)
 		
 func pause_clicked():
 	get_tree().paused = !get_tree().paused
