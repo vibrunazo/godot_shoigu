@@ -7,6 +7,8 @@ signal update_score
 signal game_loaded
 signal audio_updated
 signal show_credits
+signal hide_credits
+signal back_pressed
 
 # saved at
 # %APPDATA%\Godot\
@@ -27,7 +29,8 @@ func _init():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# so the Global inputs can still be handled while paused
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
 func _unhandled_key_input(event):

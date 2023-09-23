@@ -9,6 +9,7 @@ var music_volume: = -12
 func _ready():
 	$VideoTalkLoop.finished.connect(on_talk_loop_finished)
 	Global.show_credits.connect(_on_show_credits)
+	Global.back_pressed.connect(_on_hide_credits)
 	Global.show_pause.connect(_on_pause_pressed)
 	$AudioMusicLoop.volume_db = -60
 	music_fade_in($AudioMusicLoop)
@@ -56,6 +57,7 @@ func music_fade_out(widget, duration = 2):
 
 func _on_pause_pressed():
 	$AudioClick.play()
+	%CreditsPanel.hide()
 	if state == 0:
 		%IntroMenu.visible = true
 		get_tree().paused = true
@@ -66,4 +68,9 @@ func _on_pause_pressed():
 		state = 0
 
 func _on_show_credits():
-	print('show credits')
+	%IntroMenu.hide()
+	%CreditsPanel.show()
+
+func _on_hide_credits():
+	%IntroMenu.show()
+	%CreditsPanel.hide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://djbcofb3nw6fs"]
+[gd_scene load_steps=23 format=3 uid="uid://djbcofb3nw6fs"]
 
 [ext_resource type="Script" path="res://scenes/opening.gd" id="1_054iu"]
 [ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_gi4hl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/ui_opening.gd" id="6_rvwew"]
 [ext_resource type="AudioStream" uid="uid://c3rx16dkfnf8v" path="res://assets/audio/music/Shooting Stars loop.ogg" id="7_hncdu"]
 [ext_resource type="AudioStream" uid="uid://buoukjs4f34v3" path="res://assets/audio/music/Shooting Stars introfast.ogg" id="8_qr2gm"]
+[ext_resource type="PackedScene" uid="uid://dqwjw6a52n5vg" path="res://scenes/credits_panel.tscn" id="8_xyoak"]
 [ext_resource type="AudioStream" uid="uid://bmaw4ewqjsy8y" path="res://assets/audio/music/Shooting Stars main.ogg" id="9_1dmb4"]
 [ext_resource type="AudioStream" uid="uid://wstqyl1p2ufx" path="res://assets/audio/click4.ogg" id="10_l1rpx"]
 
@@ -203,22 +204,6 @@ tracks/5/keys = {
 _data = {
 "RESET": SubResource("Animation_tval0"),
 "start": SubResource("Animation_ic4m4")
-}
-
-[sub_resource type="Animation" id="Animation_wnrfv"]
-resource_name = "start"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ui/LabelClick:theme_override_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.909804, 0.807843, 0.027451, 1), Color(0.909804, 0.027451, 0.027451, 1), Color(0.909804, 0.807843, 0.027451, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_cdoe5"]
@@ -510,6 +495,22 @@ tracks/11/keys = {
 "times": PackedFloat32Array(10, 15)
 }
 
+[sub_resource type="Animation" id="Animation_wnrfv"]
+resource_name = "start"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ui/LabelClick:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.909804, 0.807843, 0.027451, 1), Color(0.909804, 0.027451, 0.027451, 1), Color(0.909804, 0.807843, 0.027451, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_amhoh"]
 _data = {
 "RESET": SubResource("Animation_cdoe5"),
@@ -626,10 +627,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -189.0
-offset_top = 264.0
-offset_right = 189.0
-offset_bottom = 355.0
+offset_left = 771.0
+offset_top = 804.0
+offset_right = 1149.0
+offset_bottom = 895.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
@@ -665,6 +666,22 @@ offset_left = -171.0
 offset_top = -221.0
 offset_right = 171.0
 offset_bottom = 221.0
+
+[node name="CreditsPanel" parent="Ui" instance=ExtResource("8_xyoak")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -283.5
+offset_right = 232.0
+offset_bottom = 283.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {

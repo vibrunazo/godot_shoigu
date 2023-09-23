@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d10ke3h0lhpym"]
+
+[ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_1l0ou"]
+[ext_resource type="Script" path="res://scenes/back_button.gd" id="2_sb43g"]
+
+[node name="BackButton" type="Button"]
+custom_minimum_size = Vector2(128, 128)
+size_flags_horizontal = 4
+theme = ExtResource("1_1l0ou")
+text = "Back"
+script = ExtResource("2_sb43g")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
