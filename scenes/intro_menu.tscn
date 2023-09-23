@@ -35,10 +35,9 @@ theme_type_variation = &"HeaderLarge"
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Settings"
-horizontal_alignment = 1
+text = "Credits"
 
 [node name="SettingsPanel" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_nr8xd")]
 layout_mode = 2
@@ -49,3 +48,5 @@ alignment = 1
 
 [node name="QuitButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_rt6pw")]
 layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CreditsButton" to="MarginContainer/VBoxContainer/HBoxContainer/QuitButton" method="_on_credits_button_pressed"]

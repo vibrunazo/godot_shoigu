@@ -8,12 +8,11 @@ var music_volume: = -12
 
 func _ready():
 	$VideoTalkLoop.finished.connect(on_talk_loop_finished)
+	Global.show_credits.connect(_on_show_credits)
+	Global.show_pause.connect(_on_pause_pressed)
 	$AudioMusicLoop.volume_db = -60
 	music_fade_in($AudioMusicLoop)
 	$BirdIntro.visible = false
-
-#func _process(delta):
-#	print($AudioMusicLoop.get_playback_position())
 	
 func _unhandled_input(event):
 	if state != 0: return
@@ -55,7 +54,7 @@ func music_fade_out(widget, duration = 2):
 	tween.tween_property(widget, "volume_db", -60, duration)
 
 
-func _on_button_pressed():
+func _on_pause_pressed():
 	$AudioClick.play()
 	if state == 0:
 		%IntroMenu.visible = true
@@ -65,3 +64,6 @@ func _on_button_pressed():
 		%IntroMenu.visible = false
 		get_tree().paused = false
 		state = 0
+
+func _on_show_credits():
+	print('show credits')

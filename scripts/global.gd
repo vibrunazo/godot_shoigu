@@ -6,6 +6,7 @@ signal show_game_over
 signal update_score
 signal game_loaded
 signal audio_updated
+signal show_credits
 
 # saved at
 # %APPDATA%\Godot\
