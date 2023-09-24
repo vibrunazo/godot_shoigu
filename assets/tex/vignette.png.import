@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm8kgxrq4yd58"
-path="res://.godot/imported/bg-radial.png-80b030a5cc7951eeb8f27f5a37ebad43.ctex"
+uid="uid://dcu7lkshixykf"
+path="res://.godot/imported/vignette.png-4bbfd6ac75fd77e2a97407792d96c29c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tex/bg-radial.png"
-dest_files=["res://.godot/imported/bg-radial.png-80b030a5cc7951eeb8f27f5a37ebad43.ctex"]
+source_file="res://assets/tex/vignette.png"
+dest_files=["res://.godot/imported/vignette.png-4bbfd6ac75fd77e2a97407792d96c29c.ctex"]
 
 [params]
 
