@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://66fvugahhf8y"]
+[gd_scene load_steps=14 format=3 uid="uid://66fvugahhf8y"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_cl7ne"]
 [ext_resource type="PackedScene" uid="uid://bk7nyxujsjke" path="res://scenes/bird.tscn" id="1_ibgmi"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://c7fljg0iu6jc4" path="res://assets/tex/clouds2.png" id="6_tsqpv"]
 [ext_resource type="PackedScene" uid="uid://7hmvg15ai08b" path="res://scenes/ui.tscn" id="6_w02nk"]
 [ext_resource type="AudioStream" uid="uid://bi0txdjhgkeda" path="res://assets/audio/music/Egyptian orchestra - Russian Anthem.mp3" id="7_vddb2"]
-[ext_resource type="Texture2D" uid="uid://cm8kgxrq4yd58" path="res://assets/tex/bg-radial.png" id="10_xetgb"]
 [ext_resource type="Texture2D" uid="uid://dcu7lkshixykf" path="res://assets/tex/vignette.png" id="11_pggt8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_quqjl"]
@@ -140,16 +139,6 @@ position = Vector2(2240, -192)
 position = Vector2(2496, -192)
 
 [node name="LayerOverlay" type="CanvasLayer" parent="."]
-
-[node name="TexRadial" type="TextureRect" parent="LayerOverlay"]
-visible = false
-modulate = Color(0, 0, 0, 0.54902)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_xetgb")
 
 [node name="TextureRect" type="TextureRect" parent="LayerOverlay"]
 material = SubResource("CanvasItemMaterial_quqjl")
