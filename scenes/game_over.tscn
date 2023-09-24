@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://lppr2slkcrxg"]
+[gd_scene load_steps=10 format=3 uid="uid://lppr2slkcrxg"]
 
 [ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_th7s2"]
 [ext_resource type="PackedScene" uid="uid://bf34mxuqysu74" path="res://scenes/restart_button.tscn" id="2_egubq"]
 [ext_resource type="Script" path="res://scenes/game_over.gd" id="2_n07wu"]
 [ext_resource type="PackedScene" uid="uid://bldgqq7r0ci60" path="res://scenes/score_panel.tscn" id="3_vqadt"]
 [ext_resource type="PackedScene" uid="uid://envk87qpssjb" path="res://scenes/settings_panel.tscn" id="4_a5hhv"]
+[ext_resource type="PackedScene" uid="uid://d10ke3h0lhpym" path="res://scenes/back_button.tscn" id="6_c6ydk"]
 
 [sub_resource type="Animation" id="Animation_ggfhu"]
 length = 0.001
@@ -123,8 +124,19 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="RestartButton" parent="Panel/Mp/VBoxContainer" instance=ExtResource("2_egubq")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Mp/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RestartButton" parent="Panel/Mp/VBoxContainer/HBoxContainer" instance=ExtResource("2_egubq")]
 unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Panel/Mp/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="BackButton" parent="Panel/Mp/VBoxContainer/HBoxContainer" instance=ExtResource("6_c6ydk")]
 layout_mode = 2
 
 [node name="Anim" type="AnimationPlayer" parent="."]

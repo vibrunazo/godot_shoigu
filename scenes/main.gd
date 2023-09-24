@@ -31,6 +31,7 @@ func _ready():
 	if ui:
 		hud = ui.hud
 	$AudioMusic.volume_db = -60
+	Global.back_pressed.connect(_on_back)
 	music_fade_in()
 	
 	await get_tree().create_timer(3.4).timeout
@@ -104,6 +105,10 @@ func pause_clicked():
 		Global.show_pause.emit()
 	else:
 		Global.hide_pause.emit()
+
+func _on_back():
+	get_tree().change_scene_to_file("res://scenes/opening.tscn")
+	get_tree().paused = false
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_IN:

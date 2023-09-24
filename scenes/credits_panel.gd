@@ -7,10 +7,11 @@ play at: [url=https://vib.itch.io/shoigu]vib.itch.io/shoigu[/url]
 Developed by:
 	vibrunazo
 
-Credits:
+Special thanks to:
+	Awesomesauce1337
 	Winter-Revolution-41
 	ApokalypseCow
-	r/noncredibledefense
+	[url=https://www.reddit.com/r/NonCredibleDefense/comments/16ig0mt/shoigu_shrug_reaction_gif/]r/noncredibledefense[/url]
 
 Assets:
 	[url=https://opengameart.org/content/punch]qubodup[/url]
