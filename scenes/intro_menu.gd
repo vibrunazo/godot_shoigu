@@ -7,3 +7,7 @@ func _ready():
 
 func _on_credits_button_pressed():
 	Global.show_credits.emit()
+
+func _on_visibility_changed():
+	if is_visible_in_tree():
+		%CreditsButton.grab_focus()

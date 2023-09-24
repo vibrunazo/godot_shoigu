@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqwjw6a52n5vg"]
+[gd_scene load_steps=4 format=3 uid="uid://dqwjw6a52n5vg"]
 
 [ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_ftkmd"]
+[ext_resource type="Script" path="res://scenes/credits_panel.gd" id="2_e1qjl"]
 [ext_resource type="PackedScene" uid="uid://d10ke3h0lhpym" path="res://scenes/back_button.tscn" id="2_fbed1"]
 
 [node name="CreditsPanel" type="PanelContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("1_ftkmd")
+script = ExtResource("2_e1qjl")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -24,8 +26,9 @@ theme_type_variation = &"HeaderLarge"
 text = "Credits"
 horizontal_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
+[node name="CreditsLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 400)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 2
@@ -39,8 +42,12 @@ Suggestions:
 Winter-Revolution-41
 ApokalypseCow
 "
-fit_content = true
+context_menu_enabled = true
 selection_enabled = true
 
 [node name="BackButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_fbed1")]
+unique_name_in_owner = true
 layout_mode = 2
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/CreditsLabel" to="." method="_on_credits_label_meta_clicked"]

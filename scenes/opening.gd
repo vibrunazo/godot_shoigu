@@ -60,10 +60,12 @@ func _on_pause_pressed():
 	%CreditsPanel.hide()
 	if state == 0:
 		%IntroMenu.visible = true
+		%LabelClick.hide()
 		get_tree().paused = true
 		state = 2
 	elif state == 2:
 		%IntroMenu.visible = false
+		%LabelClick.show()
 		get_tree().paused = false
 		state = 0
 

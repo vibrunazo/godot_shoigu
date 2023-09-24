@@ -9,11 +9,6 @@ func _ready():
 	Global.hide_pause.connect(stop)
 	visible = false
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func start():
 	$Anim.play("start")
 
