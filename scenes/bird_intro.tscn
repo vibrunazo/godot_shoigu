@@ -6,7 +6,7 @@
 speed = 0
 
 [node name="Anim" parent="." index="0"]
-scale = Vector2(1, 1)
+scale = Vector2(1.5, 1.5)
 
 [node name="Col" parent="." index="1"]
 visible = false

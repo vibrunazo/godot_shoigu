@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://djbcofb3nw6fs"]
+[gd_scene load_steps=25 format=3 uid="uid://djbcofb3nw6fs"]
 
 [ext_resource type="Script" path="res://scenes/opening.gd" id="1_054iu"]
 [ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_gi4hl"]
 [ext_resource type="VideoStream" path="res://assets/movie/shoigopening.ogv" id="1_hrjeu"]
 [ext_resource type="VideoStream" path="res://assets/movie/shoigu talk loop.ogv" id="3_pbps2"]
+[ext_resource type="Texture2D" path="res://assets/tex/loopref.png" id="4_y7jqg"]
 [ext_resource type="Texture2D" uid="uid://cm8kgxrq4yd58" path="res://assets/tex/bg-radial.png" id="5_4auwu"]
 [ext_resource type="PackedScene" uid="uid://b13bmb853ce7g" path="res://scenes/intro_menu.tscn" id="6_11xkl"]
 [ext_resource type="PackedScene" uid="uid://efrynet2vbbx" path="res://scenes/bird_intro.tscn" id="6_r0152"]
@@ -86,7 +87,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(759, 549)]
+"values": [Vector2(654, 555)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -159,10 +160,10 @@ tracks/2/path = NodePath("BirdIntro:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1, 1.5, 3, 3.5, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 1.5, 3, 3.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(759, 549), Vector2(781, 565), Vector2(933, 468), Vector2(1001, 536), Vector2(1761, -476)]
+"values": [Vector2(654, 555), Vector2(654, 555), Vector2(757, 592), Vector2(933, 468), Vector2(1001, 536), Vector2(1761, -476)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -532,31 +533,20 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -360.0
-offset_right = 640.0
-offset_bottom = 360.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 stream = ExtResource("1_hrjeu")
+expand = true
 bus = &"Sfx"
 
 [node name="VideoTalkLoop" type="VideoStreamPlayer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -360.0
-offset_right = 640.0
-offset_bottom = 360.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -564,10 +554,20 @@ size_flags_vertical = 4
 mouse_filter = 2
 stream = ExtResource("3_pbps2")
 autoplay = true
+expand = true
 bus = &"Sfx"
 
+[node name="LoopRef" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_y7jqg")
+
 [node name="BirdIntro" parent="." instance=ExtResource("6_r0152")]
-position = Vector2(759, 549)
+position = Vector2(654, 555)
 
 [node name="LayerOverlay" type="CanvasLayer" parent="."]
 
@@ -591,6 +591,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("1_gi4hl")
 script = ExtResource("6_rvwew")
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Ui"]
 layout_mode = 1
