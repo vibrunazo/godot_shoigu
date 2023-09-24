@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://66fvugahhf8y"]
+[gd_scene load_steps=13 format=3 uid="uid://66fvugahhf8y"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_cl7ne"]
 [ext_resource type="PackedScene" uid="uid://bk7nyxujsjke" path="res://scenes/bird.tscn" id="1_ibgmi"]
 [ext_resource type="PackedScene" uid="uid://mlc87t4e6eux" path="res://scenes/floor.tscn" id="2_dih4j"]
 [ext_resource type="PackedScene" uid="uid://bhs4c1k8o4nvs" path="res://scenes/wall.tscn" id="2_o1q4m"]
 [ext_resource type="PackedScene" uid="uid://dxpoilp5kco28" path="res://scenes/game_cam.tscn" id="3_5uk06"]
+[ext_resource type="Texture2D" uid="uid://nb1syemonlbu" path="res://assets/tex/clouds1.png" id="3_yrj33"]
+[ext_resource type="Texture2D" uid="uid://df437mwd4wsah" path="res://assets/tex/clouds3.png" id="4_7powi"]
+[ext_resource type="Texture2D" uid="uid://b26fhwq1qn4iv" path="res://assets/tex/clouds4.png" id="5_hwr8q"]
+[ext_resource type="Texture2D" uid="uid://c7fljg0iu6jc4" path="res://assets/tex/clouds2.png" id="6_tsqpv"]
 [ext_resource type="PackedScene" uid="uid://7hmvg15ai08b" path="res://scenes/ui.tscn" id="6_w02nk"]
 [ext_resource type="AudioStream" uid="uid://bi0txdjhgkeda" path="res://assets/audio/music/Egyptian orchestra - Russian Anthem.mp3" id="7_vddb2"]
+[ext_resource type="Texture2D" uid="uid://cm8kgxrq4yd58" path="res://assets/tex/bg-radial.png" id="10_xetgb"]
 
 [node name="Main" type="Control" node_paths=PackedStringArray("bird", "ui")]
 process_mode = 1
@@ -21,6 +26,28 @@ script = ExtResource("1_cl7ne")
 bird = NodePath("Bird")
 ui = NodePath("UI")
 wall_scene = ExtResource("2_o1q4m")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(64, 128)
+texture = ExtResource("3_yrj33")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(640, 384)
+texture = ExtResource("4_7powi")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1472, 192)
+texture = ExtResource("5_hwr8q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(2560, 448)
+texture = ExtResource("6_tsqpv")
 
 [node name="Bird" parent="." instance=ExtResource("1_ibgmi")]
 position = Vector2(320, 384)
@@ -90,10 +117,21 @@ position = Vector2(1472, -192)
 [node name="Floor18" parent="floors" instance=ExtResource("2_dih4j")]
 position = Vector2(1728, -192)
 
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="LayerOverlay" type="CanvasLayer" parent="."]
+
+[node name="TexRadial" type="TextureRect" parent="LayerOverlay"]
+modulate = Color(0, 0, 0, 0.54902)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_xetgb")
 
 [node name="UI" parent="." instance=ExtResource("6_w02nk")]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="AudioMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_vddb2")

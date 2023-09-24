@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://djbcofb3nw6fs"]
+[gd_scene load_steps=24 format=3 uid="uid://djbcofb3nw6fs"]
 
 [ext_resource type="Script" path="res://scenes/opening.gd" id="1_054iu"]
 [ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_gi4hl"]
 [ext_resource type="VideoStream" path="res://assets/movie/shoigopening.ogv" id="1_hrjeu"]
 [ext_resource type="VideoStream" path="res://assets/movie/shoigu talk loop.ogv" id="3_pbps2"]
+[ext_resource type="Texture2D" uid="uid://cm8kgxrq4yd58" path="res://assets/tex/bg-radial.png" id="5_4auwu"]
 [ext_resource type="PackedScene" uid="uid://b13bmb853ce7g" path="res://scenes/intro_menu.tscn" id="6_11xkl"]
 [ext_resource type="PackedScene" uid="uid://efrynet2vbbx" path="res://scenes/bird_intro.tscn" id="6_r0152"]
 [ext_resource type="Script" path="res://scenes/ui_opening.gd" id="6_rvwew"]
@@ -567,6 +568,17 @@ bus = &"Sfx"
 
 [node name="BirdIntro" parent="." instance=ExtResource("6_r0152")]
 position = Vector2(759, 549)
+
+[node name="LayerOverlay" type="CanvasLayer" parent="."]
+
+[node name="TexRadial" type="TextureRect" parent="LayerOverlay"]
+modulate = Color(0, 0, 0, 0.54902)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_4auwu")
 
 [node name="Ui" type="Control" parent="."]
 process_mode = 3
