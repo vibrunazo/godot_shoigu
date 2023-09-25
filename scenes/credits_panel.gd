@@ -14,8 +14,10 @@ Special thanks to:
 	[url=https://www.reddit.com/r/NonCredibleDefense/comments/16ig0mt/shoigu_shrug_reaction_gif/]r/noncredibledefense[/url]
 
 Assets:
-	[url=https://opengameart.org/content/punch]qubodup[/url]
-	[url=https://kenney.nl]Kenney[/url]
+	[url=https://opengameart.org/content/punch]qubodup for hit sounds[/url]
+	[url=https://kenney.nl]Kenney for ui sounds[/url]
+	[url=https://en.wikipedia.org/wiki/File:Woodland_EMR_camo_of_the_Russian_Armed_Forces.png]Wikipedia for Russian camo[/url]
+
 
 [url=https://godotengine.org/]Godot Game Engine[/url]
 """
