@@ -1,4 +1,4 @@
-@icon("res://assets/tex/wall.png")
+#@icon("res://assets/tex/wall.png")
 extends Node2D
 
 class_name Wall
