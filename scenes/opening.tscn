@@ -1,10 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://djbcofb3nw6fs"]
+[gd_scene load_steps=25 format=3 uid="uid://djbcofb3nw6fs"]
 
 [ext_resource type="Script" path="res://scenes/opening.gd" id="1_054iu"]
 [ext_resource type="Theme" uid="uid://dqi0hk3a3o51b" path="res://res/bird_theme.tres" id="1_gi4hl"]
 [ext_resource type="VideoStream" path="res://assets/movie/shoigopening.ogv" id="1_hrjeu"]
 [ext_resource type="VideoStream" path="res://assets/movie/shoigu talk loop.ogv" id="3_pbps2"]
-[ext_resource type="Texture2D" path="res://assets/tex/loopref.png" id="4_y7jqg"]
 [ext_resource type="PackedScene" uid="uid://b13bmb853ce7g" path="res://scenes/intro_menu.tscn" id="6_11xkl"]
 [ext_resource type="PackedScene" uid="uid://efrynet2vbbx" path="res://scenes/bird_intro.tscn" id="6_r0152"]
 [ext_resource type="Script" path="res://scenes/ui_opening.gd" id="6_rvwew"]
@@ -559,15 +558,6 @@ stream = ExtResource("3_pbps2")
 autoplay = true
 expand = true
 bus = &"Sfx"
-
-[node name="LoopRef" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_y7jqg")
 
 [node name="BirdIntro" parent="." instance=ExtResource("6_r0152")]
 position = Vector2(654, 555)
