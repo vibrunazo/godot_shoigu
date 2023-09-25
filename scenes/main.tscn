@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://66fvugahhf8y"]
+[gd_scene load_steps=19 format=3 uid="uid://66fvugahhf8y"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_cl7ne"]
 [ext_resource type="PackedScene" uid="uid://bk7nyxujsjke" path="res://scenes/bird.tscn" id="1_ibgmi"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dhanmleykcnpf" path="res://assets/tex/building1.png" id="7_t78u2"]
 [ext_resource type="AudioStream" uid="uid://bi0txdjhgkeda" path="res://assets/audio/music/Egyptian orchestra - Russian Anthem.mp3" id="7_vddb2"]
 [ext_resource type="Texture2D" uid="uid://bgilq60ftgiu6" path="res://assets/tex/building2.png" id="8_mjyfx"]
+[ext_resource type="Texture2D" uid="uid://bog0akeiwmevr" path="res://assets/tex/tree1.png" id="9_asem2"]
 [ext_resource type="Texture2D" uid="uid://dcu7lkshixykf" path="res://assets/tex/vignette.png" id="11_pggt8"]
 
 [sub_resource type="Gradient" id="Gradient_sfqhv"]
@@ -75,7 +76,7 @@ texture = ExtResource("6_tsqpv")
 [node name="ParallaxLayerBuildings2" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color(0.588235, 0.588235, 0.588235, 1)
 motion_scale = Vector2(0.4, 0.4)
-motion_mirroring = Vector2(2100, 0)
+motion_mirroring = Vector2(2350, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
 position = Vector2(1216, 832)
@@ -84,6 +85,58 @@ texture = ExtResource("7_t78u2")
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
 position = Vector2(704, 768)
 texture = ExtResource("8_mjyfx")
+
+[node name="Sprite2D7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(1420, 880)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(1991, 880)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D25" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(678, 900)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D26" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(1504, 892)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D27" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(432, 900)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(1686, 895)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(1730, 885)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D11" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(1818, 925)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D28" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(263, 896)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D12" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(2048, 885)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D14" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(1336, 902)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D13" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(2136, 925)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D21" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(1938, 904)
+texture = ExtResource("9_asem2")
 
 [node name="ParallaxLayerBuildings" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.5, 0.5)
@@ -96,6 +149,102 @@ texture = ExtResource("7_t78u2")
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings"]
 position = Vector2(1856, 768)
 texture = ExtResource("8_mjyfx")
+
+[node name="ParallaxLayerTrees" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.55, 0.55)
+motion_mirroring = Vector2(3500, 0)
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(884, 901)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(593, 920)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(830, 888)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(1401, 888)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D25" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(88, 908)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(1829, 907)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(1873, 897)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D11" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(1961, 937)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D21" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(2081, 916)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D22" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(2318, 884)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D23" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(3361, 893)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D24" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(3449, 933)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D12" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(1997, 917)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D13" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(2177, 894)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D14" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(2437, 942)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D15" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(2395, 918)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D17" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(2669, 935)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D18" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(2713, 925)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D19" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(3017, 922)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D20" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(3235, 946)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D16" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(2474, 900)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(1003, 919)
+texture = ExtResource("9_asem2")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees"]
+position = Vector2(948, 893)
+texture = ExtResource("9_asem2")
 
 [node name="Bird" parent="." instance=ExtResource("1_ibgmi")]
 position = Vector2(320, 384)
