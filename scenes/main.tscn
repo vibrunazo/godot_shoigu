@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://66fvugahhf8y"]
+[gd_scene load_steps=18 format=3 uid="uid://66fvugahhf8y"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_cl7ne"]
 [ext_resource type="PackedScene" uid="uid://bk7nyxujsjke" path="res://scenes/bird.tscn" id="1_ibgmi"]
@@ -10,8 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://b26fhwq1qn4iv" path="res://assets/tex/clouds4.png" id="5_hwr8q"]
 [ext_resource type="Texture2D" uid="uid://c7fljg0iu6jc4" path="res://assets/tex/clouds2.png" id="6_tsqpv"]
 [ext_resource type="PackedScene" uid="uid://7hmvg15ai08b" path="res://scenes/ui.tscn" id="6_w02nk"]
+[ext_resource type="Texture2D" uid="uid://dhanmleykcnpf" path="res://assets/tex/building1.png" id="7_t78u2"]
 [ext_resource type="AudioStream" uid="uid://bi0txdjhgkeda" path="res://assets/audio/music/Egyptian orchestra - Russian Anthem.mp3" id="7_vddb2"]
+[ext_resource type="Texture2D" uid="uid://bgilq60ftgiu6" path="res://assets/tex/building2.png" id="8_mjyfx"]
 [ext_resource type="Texture2D" uid="uid://dcu7lkshixykf" path="res://assets/tex/vignette.png" id="11_pggt8"]
+
+[sub_resource type="Gradient" id="Gradient_sfqhv"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.448399, 1)
+colors = PackedColorArray(0.392, 0.5194, 0.98, 1, 0.320507, 0.314359, 0.974406, 1, 0.3376, 0.108, 0.6, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ign40"]
+gradient = SubResource("Gradient_sfqhv")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_quqjl"]
 blend_mode = 3
@@ -32,25 +42,60 @@ wall_scene = ExtResource("2_o1q4m")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayerSky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerSky"]
+position = Vector2(576, 512)
+rotation = 1.57079
+scale = Vector2(18, 18)
+texture = SubResource("GradientTexture2D_ign40")
+
+[node name="ParallaxLayerClouds" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(4096, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerClouds"]
 position = Vector2(64, 128)
 texture = ExtResource("3_yrj33")
 
-[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(640, 384)
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerClouds"]
+position = Vector2(640, 448)
 texture = ExtResource("4_7powi")
 
-[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerClouds"]
 position = Vector2(1472, 192)
 texture = ExtResource("5_hwr8q")
 
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(2560, 448)
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerClouds"]
+position = Vector2(2560, 576)
 texture = ExtResource("6_tsqpv")
+
+[node name="ParallaxLayerBuildings2" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.588235, 0.588235, 0.588235, 1)
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(2100, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(1216, 832)
+texture = ExtResource("7_t78u2")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+position = Vector2(704, 768)
+texture = ExtResource("8_mjyfx")
+
+[node name="ParallaxLayerBuildings" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2400, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings"]
+position = Vector2(1024, 704)
+texture = ExtResource("7_t78u2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings"]
+position = Vector2(1856, 768)
+texture = ExtResource("8_mjyfx")
 
 [node name="Bird" parent="." instance=ExtResource("1_ibgmi")]
 position = Vector2(320, 384)
