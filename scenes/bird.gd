@@ -5,7 +5,7 @@ class_name Bird
 
 @export var flap_power = 300
 @export var flap_up_bonus = 220
-@export var speed = 200
+@export var speed = 160
 
 var flap_up: bool = true
 @onready var anim: AnimatedSprite2D = $Anim

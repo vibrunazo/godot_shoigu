@@ -91,7 +91,9 @@ func spawn_wall():
 	var wall: Node2D = wall_scene.instantiate()
 	$walls.add_child(wall)
 	wall.position.x = bird.position.x + 1600
-	wall.position.y += randf_range(-350, 400) + 400
+	var ymin = -250
+	var ymax = 250
+	wall.position.y += randf_range(ymin, ymax) + 400
 
 func add_score():
 	if state != STATE.PLAY: return
