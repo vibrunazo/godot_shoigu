@@ -77,7 +77,7 @@ texture = ExtResource("6_tsqpv")
 
 [node name="ParallaxLayerBuildings2" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color(0.588235, 0.588235, 0.588235, 1)
-motion_scale = Vector2(0.4, 0.4)
+motion_scale = Vector2(0.38, 0.38)
 motion_mirroring = Vector2(2350, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
@@ -88,55 +88,60 @@ texture = ExtResource("7_t78u2")
 position = Vector2(704, 768)
 texture = ExtResource("8_mjyfx")
 
-[node name="Sprite2D7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="ParallaxLayerTrees2" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.588235, 0.588235, 0.588235, 1)
+motion_scale = Vector2(0.42, 0.42)
+motion_mirroring = Vector2(2350, 0)
+
+[node name="Sprite2D7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(1420, 880)
 texture = ExtResource("9_asem2")
 
-[node name="Sprite2D8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="Sprite2D8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(1991, 880)
 texture = ExtResource("10_7uimn")
 
-[node name="Sprite2D25" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="Sprite2D25" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(678, 900)
 texture = ExtResource("9_asem2")
 
-[node name="Sprite2D26" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="Sprite2D26" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(1504, 892)
 texture = ExtResource("10_l22p6")
 
-[node name="Sprite2D27" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="Sprite2D27" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(432, 900)
 texture = ExtResource("10_l22p6")
 
-[node name="Sprite2D9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="Sprite2D9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(1686, 895)
 texture = ExtResource("10_l22p6")
 
-[node name="Sprite2D10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="Sprite2D10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(1730, 885)
 texture = ExtResource("9_asem2")
 
-[node name="Sprite2D11" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="Sprite2D11" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(1818, 925)
 texture = ExtResource("10_l22p6")
 
-[node name="Sprite2D28" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="Sprite2D28" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(263, 896)
 texture = ExtResource("10_7uimn")
 
-[node name="Sprite2D12" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="Sprite2D12" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(2048, 885)
 texture = ExtResource("9_asem2")
 
-[node name="Sprite2D14" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="Sprite2D14" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(1336, 902)
 texture = ExtResource("10_l22p6")
 
-[node name="Sprite2D13" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="Sprite2D13" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(2136, 925)
 texture = ExtResource("10_l22p6")
 
-[node name="Sprite2D21" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBuildings2"]
+[node name="Sprite2D21" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTrees2"]
 position = Vector2(1938, 904)
 texture = ExtResource("10_7uimn")
 
