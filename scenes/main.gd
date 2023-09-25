@@ -61,6 +61,7 @@ func _on_bird_died():
 	state = STATE.GAME_OVER
 	$SpawnTimer.stop()
 	if score > Global.high: Global.high = score
+	Global.update_score.emit()
 	save_game()
 	await get_tree().create_timer(3).timeout
 	on_game_over()
