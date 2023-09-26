@@ -1,7 +1,12 @@
 extends Camera2D
+class_name GameCam
 
 @export var target: Node2D
 
+static var cam_ref: GameCam
+
+func _init():
+	cam_ref = self
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
