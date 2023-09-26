@@ -28,7 +28,7 @@ horizontal_alignment = 1
 
 [node name="CreditsLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 500)
+custom_minimum_size = Vector2(800, 500)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 2
@@ -44,6 +44,10 @@ ApokalypseCow
 "
 context_menu_enabled = true
 selection_enabled = true
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 
 [node name="BackButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_fbed1")]
 unique_name_in_owner = true

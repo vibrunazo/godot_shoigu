@@ -1,6 +1,11 @@
 extends CanvasLayer
 
-var state: int = 0
+var state: STATE = STATE.INI
+enum STATE {
+	INI,
+	PLAY,
+	PAUSED
+}
 
 var music_volume_min: = -64
 var music_volume_max: = -12
@@ -22,7 +27,7 @@ func _unhandled_input(event):
 		play()
 
 func play():
-	state = 1
+	state = STATE.PLAY
 	$AnimClick.play("clicked")
 	$AudioMusicLoop.get_stream().loop = false
 #	await $AudioMusicLoop.finished
@@ -56,18 +61,19 @@ func music_fade_out(widget, duration = 2):
 
 
 func _on_pause_pressed():
+	if state == STATE.PLAY: return
 	$AudioClick.play()
 	%CreditsPanel.hide()
-	if state == 0:
+	if state == STATE.INI:
 		%IntroMenu.visible = true
 		%LabelClick.hide()
 		get_tree().paused = true
-		state = 2
-	elif state == 2:
+		state = STATE.PAUSED
+	elif state == STATE.PAUSED:
 		%IntroMenu.visible = false
 		%LabelClick.show()
 		get_tree().paused = false
-		state = 0
+		state = STATE.INI
 
 func _on_show_credits():
 	%IntroMenu.hide()

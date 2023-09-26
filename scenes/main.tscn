@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://66fvugahhf8y"]
+[gd_scene load_steps=22 format=3 uid="uid://66fvugahhf8y"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_cl7ne"]
 [ext_resource type="PackedScene" uid="uid://bk7nyxujsjke" path="res://scenes/bird.tscn" id="1_ibgmi"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ydrfejub366p" path="res://assets/tex/tree3.png" id="10_7uimn"]
 [ext_resource type="Texture2D" uid="uid://bt4ibbpi2f27w" path="res://assets/tex/tree2.png" id="10_l22p6"]
 [ext_resource type="Texture2D" uid="uid://dcu7lkshixykf" path="res://assets/tex/vignette.png" id="11_pggt8"]
+[ext_resource type="AudioStream" uid="uid://wstqyl1p2ufx" path="res://assets/audio/click4.ogg" id="18_l1n6e"]
 
 [sub_resource type="Gradient" id="Gradient_sfqhv"]
 interpolation_mode = 2
@@ -363,5 +364,11 @@ metadata/_edit_lock_ = true
 stream = ExtResource("7_vddb2")
 autoplay = true
 bus = &"Music"
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("18_l1n6e")
+bus = &"Sfx"
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

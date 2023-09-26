@@ -102,6 +102,7 @@ func add_score():
 	Global.update_score.emit()
 		
 func pause_clicked():
+	%AudioClick.play()
 	get_tree().paused = !get_tree().paused
 	if state == STATE.GAME_OVER: return
 	if get_tree().paused:
@@ -118,4 +119,5 @@ func _notification(what):
 		print("focus in")
 	elif what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT:
 		print("focus out")
-		pause_clicked()
+		if not get_tree().paused:
+			pause_clicked()
