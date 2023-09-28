@@ -23,6 +23,10 @@ func adjust_sprite_relative_to_camera():
 	%SpriteTop2.position.x = x
 	%SpriteBottom2.position.x = x
 
+func set_y(new_y):
+	global_position.y = new_y
+	%SpriteTEL.global_position.y = 960
+	
 func _on_area_score_body_entered(body):
 	if body is Bird:
 		game.add_score()
@@ -31,3 +35,4 @@ func _on_area_score_body_entered(body):
 func _on_hit_body_entered(body):
 	if body is Bird:
 		body.die()
+		

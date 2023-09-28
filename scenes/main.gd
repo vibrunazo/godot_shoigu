@@ -88,12 +88,13 @@ func _on_spawn_timer_timeout():
 
 func spawn_wall():
 	if not bird: return
-	var wall: Node2D = wall_scene.instantiate()
+	var wall: Wall = wall_scene.instantiate()
 	$walls.add_child(wall)
 	wall.position.x = bird.position.x + 1600
 	var ymin = -250
 	var ymax = 250
-	wall.position.y += randf_range(ymin, ymax) + 400
+	var new_y = randf_range(ymin, ymax) + 400
+	wall.set_y(new_y)
 
 func add_score():
 	if state != STATE.PLAY: return
