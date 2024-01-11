@@ -1,7 +1,8 @@
 #@icon("res://assets/tex/wall.png")
-extends Node2D
+class_name Wall extends Node2D
 
-class_name Wall
+@export var TEL_height: float = 990
+
 
 @onready var game: Game = Game.game_ref
 @onready var cam: GameCam = GameCam.cam_ref
@@ -10,7 +11,7 @@ class_name Wall
 #	await get_tree().create_timer(20).timeout
 #	queue_free()
 
-func _process(delta):
+func _process(_delta):
 	if not cam: return
 	adjust_sprite_relative_to_camera()
 
@@ -25,7 +26,7 @@ func adjust_sprite_relative_to_camera():
 
 func set_y(new_y):
 	global_position.y = new_y
-	%SpriteTEL.global_position.y = 960
+	%SpriteTEL.global_position.y = TEL_height
 	
 func _on_area_score_body_entered(body):
 	if body is Bird:

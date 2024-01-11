@@ -28,7 +28,7 @@ func _ready():
 	ini_gravity = gravity_scale
 	gravity_scale = 0
 
-func _process(delta):
+func _process(_delta):
 	if state != STATE.PLAY: return
 	var d = linear_velocity.y / 15
 	rot(d)
