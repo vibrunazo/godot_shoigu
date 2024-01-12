@@ -21,10 +21,13 @@ func _ready():
 	$BirdIntro.visible = false
 	
 func _unhandled_input(event):
+	if event.is_action("ui_skip"):
+		end()
 	if state != 0: return
 	if event.is_action("ui_accept") || event.is_action("flap"):
 		%ButtonSettings.hide()
 		play()
+	
 
 func play():
 	state = STATE.PLAY
@@ -45,11 +48,13 @@ func play():
 	await get_tree().create_timer(5).timeout
 	music_fade_out($AudioMusicMain, 6)
 	await get_tree().create_timer(2.5).timeout
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	end()
 		
 func on_talk_loop_finished():
 	$VideoTalkLoop.play()
 
+func end():
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
 	
 func music_fade_in(widget, duration = 2):
 	var tween = create_tween()
@@ -58,7 +63,6 @@ func music_fade_in(widget, duration = 2):
 func music_fade_out(widget, duration = 2):
 	var tween = create_tween()
 	tween.tween_property(widget, "volume_db", -60, duration)
-
 
 func _on_pause_pressed():
 	if state == STATE.PLAY: return
