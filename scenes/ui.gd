@@ -9,10 +9,6 @@ class_name UI
 func _ready():
 	Global.show_game_over.connect(on_game_over)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-	
 func on_game_over():
 	game_over.start()
 	hud.end()

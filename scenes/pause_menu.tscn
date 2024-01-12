@@ -158,6 +158,7 @@ alignment = 1
 
 [node name="RestartButton" parent="Panel/Mp/VBoxContainer/HBoxContainer" instance=ExtResource("3_4xd6h")]
 layout_mode = 2
+focus_neighbor_right = NodePath("../BackButton")
 
 [node name="Control" type="Control" parent="Panel/Mp/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 0)
@@ -165,6 +166,7 @@ layout_mode = 2
 
 [node name="BackButton" parent="Panel/Mp/VBoxContainer/HBoxContainer" instance=ExtResource("6_po05g")]
 layout_mode = 2
+focus_neighbor_left = NodePath("../RestartButton")
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
