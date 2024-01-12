@@ -26,17 +26,6 @@ texture = ExtResource("1_isrp6")
 region_enabled = true
 region_rect = Rect2(0, 0, 256, 1536)
 
-[node name="SpriteTop" type="Sprite2D" parent="."]
-z_index = 12
-z_as_relative = false
-texture_repeat = 2
-position = Vector2(0, -576)
-rotation = -3.14159
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_isrp6")
-region_enabled = true
-region_rect = Rect2(0, 0, 256, 1536)
-
 [node name="SpriteBottom2" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 modulate = Color(0.3, 0.3, 0.3, 1)
@@ -45,16 +34,6 @@ z_as_relative = false
 texture_repeat = 2
 position = Vector2(64, 576)
 scale = Vector2(0.45, 0.45)
-texture = ExtResource("1_isrp6")
-region_enabled = true
-region_rect = Rect2(0, 0, 256, 1536)
-
-[node name="SpriteBottom" type="Sprite2D" parent="."]
-z_index = 12
-z_as_relative = false
-texture_repeat = 2
-position = Vector2(0, 576)
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_isrp6")
 region_enabled = true
 region_rect = Rect2(0, 0, 256, 1536)
@@ -78,11 +57,32 @@ freeze = true
 position = Vector2(0, -576)
 shape = SubResource("RectangleShape2D_fe76j")
 
+[node name="SpriteTop" type="Sprite2D" parent="HitTop"]
+z_index = 12
+z_as_relative = false
+texture_repeat = 2
+position = Vector2(0, -576)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_isrp6")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 1536)
+
 [node name="HitBot" type="RigidBody2D" parent="."]
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBot"]
 position = Vector2(0, 576)
 shape = SubResource("RectangleShape2D_fe76j")
+
+[node name="SpriteBottom" type="Sprite2D" parent="HitBot"]
+z_index = 12
+z_as_relative = false
+texture_repeat = 2
+position = Vector2(0, 576)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_isrp6")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 1536)
 
 [connection signal="body_entered" from="AreaScore" to="." method="_on_area_score_body_entered"]

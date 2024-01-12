@@ -7,6 +7,9 @@ class_name Wall extends Node2D
 
 @onready var game: Game = Game.game_ref
 @onready var cam: GameCam = GameCam.cam_ref
+@onready var hit_top: RigidBody2D = $HitTop
+@onready var hit_bot: RigidBody2D = $HitBot
+@onready var sprite_tel: Sprite2D = %SpriteTEL
 
 func _ready():
 	update_tel()
@@ -21,17 +24,22 @@ func adjust_sprite_relative_to_camera():
 	var p = global_position
 	var c = cam.global_position
 	var d = c - p
-	var k = 0.08
-	var x = clamp(d.x * k, -128, 128)
-	%SpriteTop2.position.x = x
-	%SpriteBottom2.position.x = x
+	var k1 = -0.06
+	var k2 = 0.02
+	var x1 = clamp(d.x * k1, -128, 128)
+	var x2 = clamp(d.x * k2, -128, 128)
+	%SpriteTop2.position.x = x2
+	%SpriteBottom2.position.x = x2
+	hit_bot.position.x = x1
+	hit_top.position.x = x1
+	#sprite_tel.position.x = x1 * 0.5
 
 func set_y(new_y):
 	global_position.y = new_y
 	update_tel()
 
 func update_tel():
-	%SpriteTEL.global_position.y = randf_range(tel_height_min, tel_height_max)
+	sprite_tel.global_position.y = randf_range(tel_height_min, tel_height_max)
 	
 func _on_area_score_body_entered(body):
 	if body is Bird:
