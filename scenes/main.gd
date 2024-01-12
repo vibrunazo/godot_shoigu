@@ -112,8 +112,8 @@ func pause_clicked():
 		Global.hide_pause.emit()
 
 func _on_back():
-	get_tree().change_scene_to_file("res://scenes/opening.tscn")
 	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/opening.tscn")
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_IN:

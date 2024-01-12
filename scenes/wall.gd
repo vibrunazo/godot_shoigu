@@ -1,7 +1,8 @@
 #@icon("res://assets/tex/wall.png")
 class_name Wall extends Node2D
 
-@export var TEL_height: float = 1000
+@export var tel_height_min: float = 970
+@export var tel_height_max: float = 1005
 
 
 @onready var game: Game = Game.game_ref
@@ -30,7 +31,7 @@ func set_y(new_y):
 	update_tel()
 
 func update_tel():
-	%SpriteTEL.global_position.y = TEL_height
+	%SpriteTEL.global_position.y = randf_range(tel_height_min, tel_height_max)
 	
 func _on_area_score_body_entered(body):
 	if body is Bird:

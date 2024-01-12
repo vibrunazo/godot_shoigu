@@ -16,7 +16,7 @@ script = ExtResource("1_hg4se")
 [node name="SpriteTop2" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 modulate = Color(0.3, 0.3, 0.3, 1)
-z_index = 10
+z_index = 9
 z_as_relative = false
 texture_repeat = 2
 position = Vector2(64, -576)
@@ -40,7 +40,7 @@ region_rect = Rect2(0, 0, 256, 1536)
 [node name="SpriteBottom2" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 modulate = Color(0.3, 0.3, 0.3, 1)
-z_index = 10
+z_index = 9
 z_as_relative = false
 texture_repeat = 2
 position = Vector2(64, 576)
@@ -61,7 +61,7 @@ region_rect = Rect2(0, 0, 256, 1536)
 
 [node name="SpriteTEL" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-z_index = 13
+z_index = 11
 position = Vector2(384, 512)
 texture = ExtResource("3_xfxob")
 
@@ -79,7 +79,6 @@ position = Vector2(0, -576)
 shape = SubResource("RectangleShape2D_fe76j")
 
 [node name="HitBot" type="RigidBody2D" parent="."]
-visible = false
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBot"]

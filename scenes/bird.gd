@@ -9,6 +9,7 @@ class_name Bird
 
 var flap_up: bool = true
 @onready var anim: AnimatedSprite2D = $Anim
+@onready var audio_hit: AudioStreamPlayer2D = $AudioHit
 var state: STATE = STATE.INI
 enum STATE {
 	INI,
@@ -73,8 +74,11 @@ func looped():
 		anim.play("default", -3, true)
 
 func hit_wall():
-	if Time.get_ticks_msec() - last_hit > 180:
-		$AudioHit.play()
+	if Time.get_ticks_msec() - last_hit > 50 and linear_velocity.length() > 10:
+		var linear_volume : float = linear_velocity.length() / 300
+		audio_hit.volume_db = linear_to_db(linear_volume)
+		#print('bird volume set vel: %s, linear: %s, db: %s' % [linear_velocity.length(), linear_volume, audio_hit.volume_db])
+		audio_hit.play()
 		last_hit = Time.get_ticks_msec()
 	die()
 

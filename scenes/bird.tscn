@@ -90,8 +90,8 @@ stream_2/stream = ExtResource("20_5xgil")
 stream_2/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t7a5m"]
-streams_count = 3
 playback_mode = 1
+streams_count = 3
 stream_0/stream = ExtResource("19_hsxep")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("19_xtc6k")
