@@ -58,4 +58,4 @@ ui_skip={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.298039, 0.317647, 0.929412, 1)
+environment/defaults/default_clear_color=Color(0.061, 0.06295, 0.1, 1)
