@@ -41,6 +41,7 @@ region_rect = Rect2(0, 0, 256, 1536)
 [node name="SpriteTEL" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 z_index = 11
+z_as_relative = false
 position = Vector2(384, 512)
 texture = ExtResource("3_xfxob")
 
