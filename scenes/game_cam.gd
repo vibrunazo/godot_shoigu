@@ -22,4 +22,5 @@ func _on_area_2d_body_entered(body):
 	if body is Floor:
 		body.reset()
 	if body.get_parent() is Wall:
-		body.get_parent().queue_free()
+		body.get_parent().end()
+		

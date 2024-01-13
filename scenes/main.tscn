@@ -344,6 +344,11 @@ position = Vector2(2496, -192)
 [node name="Wall" parent="walls" instance=ExtResource("2_o1q4m")]
 position = Vector2(1728, 512)
 
+[node name="tels" type="Node2D" parent="." groups=["tel"]]
+z_index = 11
+z_as_relative = false
+y_sort_enabled = true
+
 [node name="LayerOverlay" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="LayerOverlay"]
