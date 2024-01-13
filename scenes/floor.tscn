@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://mlc87t4e6eux"]
 
 [ext_resource type="Script" path="res://scenes/floor.gd" id="1_rv6p4"]
-[ext_resource type="Texture2D" uid="uid://b8mshkg0dn5n3" path="res://assets/tex/floor.png" id="1_vver3"]
+[ext_resource type="Texture2D" uid="uid://cvo3h2skpuw8u" path="res://assets/tex/floor2.png" id="2_osqv3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npqnb"]
 size = Vector2(255, 134)
@@ -17,4 +17,4 @@ shape = SubResource("RectangleShape2D_npqnb")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
 z_as_relative = false
-texture = ExtResource("1_vver3")
+texture = ExtResource("2_osqv3")
