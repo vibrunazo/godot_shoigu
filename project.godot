@@ -28,6 +28,10 @@ window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="D:/godot/4/godot_shoigu/build/movie/shoigu.avi"
+
 [input]
 
 ui_toggle_fullscreen={
@@ -56,6 +60,5 @@ ui_skip={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.061, 0.06295, 0.1, 1)
