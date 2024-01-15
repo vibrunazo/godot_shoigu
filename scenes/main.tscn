@@ -398,3 +398,4 @@ stream = ExtResource("18_l1n6e")
 bus = &"Sfx"
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="finished" from="AudioMusic" to="." method="_on_audio_music_finished"]

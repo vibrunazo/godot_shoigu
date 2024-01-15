@@ -119,3 +119,8 @@ func _notification(what):
 		print("focus out")
 		if not get_tree().paused:
 			pause_clicked()
+
+
+func _on_audio_music_finished():
+	print('main audiomusic finished')
+	pass # Replace with function body.

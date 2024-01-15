@@ -49,10 +49,10 @@ func update_tel():
 	sprite_tel.reparent(tel_layer)
 	var k: float = (height - tel_height_min) / (tel_height_max - tel_height_min)
 	var m: float = clampf(0.8 + k * 0.4, 0.8, 1)
-	var w: float = 1.2 - k * 1.5
+	var w: float = 1.3 - k * 1.6
 	sprite_tel.modulate = Color(m,m,m)
 	(sprite_tel.material as ShaderMaterial).set_shader_parameter("weight", w)
-	print('wall tel height: %s, k: %s, m: %s' % [height, k, m])
+	#print('wall tel height: %s, k: %s, m: %s' % [height, k, m])
 	# 950 ~ 1020
 	
 func _on_area_score_body_entered(body):
