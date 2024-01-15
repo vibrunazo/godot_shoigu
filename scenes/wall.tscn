@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhs4c1k8o4nvs"]
+[gd_scene load_steps=8 format=3 uid="uid://bhs4c1k8o4nvs"]
 
 [ext_resource type="Script" path="res://scenes/wall.gd" id="1_hg4se"]
 [ext_resource type="Texture2D" uid="uid://ctfb4tij6o4na" path="res://assets/tex/wall.png" id="1_isrp6"]
+[ext_resource type="Shader" uid="uid://bkfil548gvjxg" path="res://res/hardlight_shader.tres" id="3_djwu3"]
 [ext_resource type="Texture2D" uid="uid://bdvjvvglkj3cj" path="res://assets/tex/TEL-tracks.png" id="3_xfxob"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocucf"]
+resource_local_to_scene = true
+shader = ExtResource("3_djwu3")
+shader_parameter/color_input = Color(0.203922, 0.203922, 0.478431, 1)
+shader_parameter/weight = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48qyt"]
 size = Vector2(64, 256)
@@ -48,6 +55,7 @@ unique_name_in_owner = true
 z_index = 11
 z_as_relative = false
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_ocucf")
 position = Vector2(384, 512)
 texture = ExtResource("3_xfxob")
 

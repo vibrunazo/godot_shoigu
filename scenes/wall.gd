@@ -1,8 +1,8 @@
 #@icon("res://assets/tex/wall.png")
 class_name Wall extends Node2D
 
-@export var tel_height_min: float = 960
-@export var tel_height_max: float = 1015
+@export var tel_height_min: float = 950
+@export var tel_height_max: float = 1020
 
 
 @onready var game: Game = Game.game_ref
@@ -48,10 +48,12 @@ func update_tel():
 	var tel_layer: Node2D = get_tree().get_first_node_in_group("tel")
 	sprite_tel.reparent(tel_layer)
 	var k: float = (height - tel_height_min) / (tel_height_max - tel_height_min)
-	var m: float = 0.2 + k * 0.8
+	var m: float = clampf(0.8 + k * 0.4, 0.8, 1)
+	var w: float = 1.2 - k * 1.5
 	sprite_tel.modulate = Color(m,m,m)
+	(sprite_tel.material as ShaderMaterial).set_shader_parameter("weight", w)
 	print('wall tel height: %s, k: %s, m: %s' % [height, k, m])
-	# 960 ~ 1065
+	# 950 ~ 1020
 	
 func _on_area_score_body_entered(body):
 	if body is Bird:
