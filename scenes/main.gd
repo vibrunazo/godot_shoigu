@@ -23,6 +23,8 @@ var music_tween: Tween
 var last_spawn_x: float
 ## Global x position of next wall to spawn
 var next_spawn_x: float
+## Ammount of walls spawned
+var spawned: int = 1
 
 func _init():
 	Game.game_ref = self
@@ -44,8 +46,8 @@ func _ready():
 func play():
 	state = STATE.PLAY
 	bird.play()
-	last_spawn_x = cam.global_position.x
-	next_spawn_x = last_spawn_x + 500
+	last_spawn_x = -1000
+	next_spawn_x = 0
 	spawn_timer.start()
 	
 
@@ -83,20 +85,25 @@ func reset():
 
 func _on_spawn_timer_timeout():
 	if state == STATE.GAME_OVER: return
-	if cam.global_position.x >= next_spawn_x:
-		spawn_wall()
-		var next_min := 330.0
-		var next_max := 600.0
-		var next := randf_range(next_min, next_max)
-		last_spawn_x = cam.global_position.x
-		next_spawn_x = last_spawn_x + next
-		print('game spawned next: %s' % [next])
+	var phase_one_max: int = 25
+	if spawned < phase_one_max:
+		if cam.global_position.x >= next_spawn_x:
+			spawn_wall()
+			var difficulty: float = clampf(spawned * 1.2 / float(phase_one_max), 0, 1)
+			var next_min := lerpf(430, 310, difficulty)
+			var next_max := lerpf(600, 350, difficulty)
+			
+			var next := randf_range(next_min, next_max)
+			last_spawn_x = cam.global_position.x
+			next_spawn_x = last_spawn_x + next
+			print('game spawned next: %s, min: %s, max: %s, spanwed: %s' % [next, next_min, next_max, spawned])
 
 func spawn_wall():
 	if not bird: return
 	var wall: Wall = wall_scene.instantiate() as Wall
 	wall.position.x = bird.position.x + 1600
 	$walls.add_child(wall)
+	spawned += 1
 	
 
 func add_score():
