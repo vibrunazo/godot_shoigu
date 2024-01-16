@@ -1,17 +1,17 @@
-extends Control
-
-class_name Game
+## The class for the flappy bird game
+class_name Game extends Control
 
 @export var bird: Bird
 @export var ui: UI
 @export var wall_scene: PackedScene
 @onready var hud: Hud
+@onready var spawn_timer: Timer = $SpawnTimer
+@onready var cam: GameCam = $GameCam
 
 
 static var game_ref: Game
+## Player score
 var score: int = 0
-# ellapsed time in seconds, updated at every spawn
-var time: float = 0
 var state: STATE = STATE.INI
 enum STATE {
 	INI,
@@ -19,6 +19,10 @@ enum STATE {
 	GAME_OVER
 }
 var music_tween: Tween
+## Global x position of last spawned wall
+var last_spawn_x: float
+## Global x position of next wall to spawn
+var next_spawn_x: float
 
 func _init():
 	Game.game_ref = self
@@ -40,7 +44,10 @@ func _ready():
 func play():
 	state = STATE.PLAY
 	bird.play()
-	$SpawnTimer.start()
+	last_spawn_x = cam.global_position.x
+	next_spawn_x = last_spawn_x + 500
+	spawn_timer.start()
+	
 
 func load_game():
 	Global.load_game()
@@ -59,7 +66,7 @@ func music_fade_out():
 func _on_bird_died():
 	print('bird dead')
 	state = STATE.GAME_OVER
-	$SpawnTimer.stop()
+	spawn_timer.stop()
 	if score > Global.high: Global.high = score
 	Global.update_score.emit()
 	save_game()
@@ -76,19 +83,18 @@ func reset():
 
 func _on_spawn_timer_timeout():
 	if state == STATE.GAME_OVER: return
-	spawn_wall()
-	var min_time = 2.0
-	var max_time = 4.5
-	if time > 20:
-		min_time = 1.9
-		max_time = 3.0
-	var next_time = randf_range(min_time, max_time)
-	time += next_time
-	$SpawnTimer.start(next_time)
+	if cam.global_position.x >= next_spawn_x:
+		spawn_wall()
+		var next_min := 330.0
+		var next_max := 600.0
+		var next := randf_range(next_min, next_max)
+		last_spawn_x = cam.global_position.x
+		next_spawn_x = last_spawn_x + next
+		print('game spawned next: %s' % [next])
 
 func spawn_wall():
 	if not bird: return
-	var wall: Wall = wall_scene.instantiate()
+	var wall: Wall = wall_scene.instantiate() as Wall
 	wall.position.x = bird.position.x + 1600
 	$walls.add_child(wall)
 	
@@ -123,4 +129,3 @@ func _notification(what):
 
 func _on_audio_music_finished():
 	print('main audiomusic finished')
-	pass # Replace with function body.
