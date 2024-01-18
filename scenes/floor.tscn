@@ -9,6 +9,7 @@ size = Vector2(255, 134)
 [node name="Floor" type="RigidBody2D"]
 freeze = true
 script = ExtResource("1_rv6p4")
+metadata/obstacle = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 59)

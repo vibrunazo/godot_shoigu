@@ -12,10 +12,10 @@ shader_parameter/color_input = Color(0.329412, 0.329412, 0.529412, 1)
 shader_parameter/weight = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48qyt"]
-size = Vector2(64, 256)
+size = Vector2(64, 2048)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fe76j"]
-size = Vector2(128, 768)
+size = Vector2(104, 766)
 
 [node name="Wall" type="Node2D"]
 script = ExtResource("1_hg4se")
@@ -60,6 +60,8 @@ position = Vector2(384, 512)
 texture = ExtResource("3_xfxob")
 
 [node name="AreaScore" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaScore"]
 position = Vector2(32, 0)
@@ -67,6 +69,7 @@ shape = SubResource("RectangleShape2D_48qyt")
 
 [node name="HitTop" type="RigidBody2D" parent="."]
 freeze = true
+metadata/obstacle = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitTop"]
 position = Vector2(0, -576)
@@ -84,6 +87,7 @@ region_rect = Rect2(0, 0, 128, 768)
 
 [node name="HitBot" type="RigidBody2D" parent="."]
 freeze = true
+metadata/obstacle = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBot"]
 position = Vector2(0, 576)

@@ -59,11 +59,6 @@ func _on_area_score_body_entered(body):
 	if body is Bird:
 		game.add_score()
 
-
-func _on_hit_body_entered(body):
-	if body is Bird:
-		body.die()
-		
 ## Called by the gamecam when this wall hits the end
 func end():
 	sprite_tel.queue_free()

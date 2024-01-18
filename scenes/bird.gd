@@ -48,16 +48,23 @@ func play():
 
 ## Enables or disables god mode which mkaes the player immune to collisions
 func enable_god(enabled: bool):
-	collision.disabled = enabled
-	print('bird god: %s' % enabled)
+	#collision.disabled = enabled
+	if enabled:
+		collision_layer = 2
+		collision_mask = 0
+	else:
+		collision_layer = 3
+		collision_mask = 1
+		
+	print('bird god: %s, layer: %s, mask: %s' % [enabled, collision_layer, collision_mask])
 
 ## Toggles god mode which mkaes the player immune to collisions
 func toggle_god():
-	enable_god(!collision.disabled)
+	enable_god(!is_god())
 
 ## Returns whether god mode is enabled and I'm invincible
 func is_god() -> bool:
-	return collision.disabled
+	return (collision_layer < 3)
 	
 
 func _unhandled_input(event):
@@ -108,5 +115,5 @@ func die():
 
 
 func _on_collision(body):
-	if body is Floor or body.get_parent() is Wall:
+	if body.has_meta("obstacle"):
 		hit_wall()

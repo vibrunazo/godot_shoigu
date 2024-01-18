@@ -561,6 +561,7 @@ bus = &"Sfx"
 
 [node name="BirdIntro" parent="." instance=ExtResource("6_r0152")]
 position = Vector2(654, 555)
+collision_layer = 1
 
 [node name="LayerOverlay" type="CanvasLayer" parent="."]
 

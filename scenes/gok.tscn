@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://w8dxoh51oc3k"]
+[gd_scene load_steps=8 format=3 uid="uid://w8dxoh51oc3k"]
 
 [ext_resource type="Texture2D" uid="uid://iseay3yot7tg" path="res://assets/tex/gok/gokbladeless.png" id="1_3s4ru"]
 [ext_resource type="Script" path="res://scenes/gok.gd" id="1_dw713"]
@@ -42,6 +42,9 @@ _data = {
 "fly": SubResource("Animation_d5ar6")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kphb4"]
+size = Vector2(183, 163)
+
 [node name="Gok" type="Node2D"]
 script = ExtResource("1_dw713")
 
@@ -58,3 +61,12 @@ libraries = {
 "": SubResource("AnimationLibrary_6ykrk")
 }
 autoplay = "fly"
+
+[node name="Hit" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+freeze = true
+metadata/obstacle = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit"]
+position = Vector2(-10.5, 6.5)
+shape = SubResource("RectangleShape2D_kphb4")

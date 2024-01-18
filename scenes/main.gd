@@ -160,6 +160,7 @@ func spawn_minigok():
 	enemy.scale = Vector2(-0.2, 0.2)
 	enemy.speed = 225
 	enemy.modulate = Color(0.5, 0.5, 0.7)
+	enemy.set_collision_enabled(false)
 	$walls.add_child(enemy)
 	
 ## Speeds up music by given speed ratio. Sets pitch scale.
