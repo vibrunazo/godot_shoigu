@@ -27,7 +27,7 @@ var last_spawn_x: float
 var next_spawn_x: float
 ## Ammount of walls spawned
 var spawned: int = 1
-## Phase of the game
+## Phase of the game, determines which enemies will show up
 ## Phase 1: s300 walls
 ## Phase 2: ghost of Kyiv
 var phase: int = 1
@@ -45,7 +45,6 @@ func _ready():
 	$AudioMusic.volume_db = -60
 	Global.back_pressed.connect(_on_back)
 	music_fade_in()
-	
 	await get_tree().create_timer(3.4).timeout
 	play()
 
@@ -109,6 +108,8 @@ func phase_one_spawner():
 		last_spawn_x = cam.global_position.x
 		next_spawn_x = last_spawn_x + next
 		print('game spawned next: %s, min: %s, max: %s, spanwed: %s' % [next, next_min, next_max, spawned])
+		if spawned == 19:
+			spawn_minigok()
 	if spawned == phase_one_max:
 		start_phase_two()
 
@@ -130,6 +131,7 @@ func phase_two_spawner():
 		next_spawn_x = last_spawn_x + next
 		print('main spawned gok %s' % [spawned])
 
+## Spawns an S300 wall and TEL
 func spawn_wall():
 	if not bird: return
 	var wall: Wall = wall_scene.instantiate() as Wall
@@ -137,6 +139,7 @@ func spawn_wall():
 	$walls.add_child(wall)
 	spawned += 1
 
+## Spawns a Ghost of Kyiv
 func spawn_gok():
 	if not bird: return
 	var enemy: Gok = gok_scene.instantiate() as Gok
@@ -147,6 +150,17 @@ func spawn_gok():
 	enemy.global_position.y = new_y
 	$walls.add_child(enemy)
 	spawned += 1
+
+## Spawns a small ghost of Kyiv in the background moving right
+func spawn_minigok():
+	if not bird: return
+	var enemy: Gok = gok_scene.instantiate() as Gok
+	enemy.position.x = bird.position.x - 750
+	enemy.global_position.y = 300
+	enemy.scale = Vector2(-0.2, 0.2)
+	enemy.speed = 225
+	enemy.modulate = Color(0.5, 0.5, 0.7)
+	$walls.add_child(enemy)
 	
 ## Speeds up music by given speed ratio. Sets pitch scale.
 func set_music_speed(speed: float):
