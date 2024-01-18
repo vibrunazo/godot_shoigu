@@ -4,9 +4,11 @@ class_name Game extends Control
 @export var bird: Bird
 @export var ui: UI
 @export var wall_scene: PackedScene
+@export var gok_scene: PackedScene
 @onready var hud: Hud
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var cam: GameCam = $GameCam
+@onready var audio_music: AudioStreamPlayer = $AudioMusic
 
 
 static var game_ref: Game
@@ -25,6 +27,10 @@ var last_spawn_x: float
 var next_spawn_x: float
 ## Ammount of walls spawned
 var spawned: int = 1
+## Phase of the game
+## Phase 1: s300 walls
+## Phase 2: ghost of Kyiv
+var phase: int = 1
 
 func _init():
 	Game.game_ref = self
@@ -85,18 +91,44 @@ func reset():
 
 func _on_spawn_timer_timeout():
 	if state == STATE.GAME_OVER: return
+	match phase:
+		1:
+			phase_one_spawner()
+		2:
+			phase_two_spawner()
+	
+## Handles phase one spawning
+func phase_one_spawner():
 	var phase_one_max: int = 25
-	if spawned < phase_one_max:
-		if cam.global_position.x >= next_spawn_x:
-			spawn_wall()
-			var difficulty: float = clampf(spawned * 1.2 / float(phase_one_max), 0, 1)
-			var next_min := lerpf(430, 310, difficulty)
-			var next_max := lerpf(600, 350, difficulty)
-			
-			var next := randf_range(next_min, next_max)
-			last_spawn_x = cam.global_position.x
-			next_spawn_x = last_spawn_x + next
-			print('game spawned next: %s, min: %s, max: %s, spanwed: %s' % [next, next_min, next_max, spawned])
+	if cam.global_position.x >= next_spawn_x:
+		spawn_wall()
+		var difficulty: float = clampf(spawned * 1.2 / float(phase_one_max), 0, 1)
+		var next_min := lerpf(430, 310, difficulty)
+		var next_max := lerpf(600, 350, difficulty)
+		var next := randf_range(next_min, next_max)
+		last_spawn_x = cam.global_position.x
+		next_spawn_x = last_spawn_x + next
+		print('game spawned next: %s, min: %s, max: %s, spanwed: %s' % [next, next_min, next_max, spawned])
+	if spawned == phase_one_max:
+		start_phase_two()
+
+func start_phase_two():
+	phase = 2
+	last_spawn_x = cam.global_position.x
+	next_spawn_x = last_spawn_x + 2000
+	await get_tree().create_timer(12).timeout
+	audio_music.stream = load("res://assets/audio/music/gok theme.ogg")
+	audio_music.play()
+	print('main start phase 2')
+
+## Handles spawning for phase 2. Called every spawn timeout.
+func phase_two_spawner():
+	if cam.global_position.x >= next_spawn_x:
+		spawn_gok()
+		var next := 400.0
+		last_spawn_x = cam.global_position.x
+		next_spawn_x = last_spawn_x + next
+		print('main spawned gok %s' % [spawned])
 
 func spawn_wall():
 	if not bird: return
@@ -104,6 +136,20 @@ func spawn_wall():
 	wall.position.x = bird.position.x + 1600
 	$walls.add_child(wall)
 	spawned += 1
+
+func spawn_gok():
+	if not bird: return
+	var enemy: Gok = gok_scene.instantiate() as Gok
+	enemy.position.x = bird.position.x + 1600
+	var ymin = -250
+	var ymax = 250
+	var new_y = randf_range(ymin, ymax) + 400
+	enemy.global_position.y = new_y
+	$walls.add_child(enemy)
+	spawned += 1
+	
+	
+	
 	
 
 func add_score():

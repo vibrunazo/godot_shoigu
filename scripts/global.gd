@@ -36,6 +36,16 @@ func _ready():
 func _unhandled_key_input(event):
 	if event.is_action_pressed("ui_toggle_fullscreen"):
 		toggle_fullscreen()
+	if event.is_action_pressed("debug_speed"):
+		toggle_speed_hack()
+
+## Toggles whether to speed up time
+func toggle_speed_hack():
+	if Engine.time_scale == 1:
+		Engine.time_scale = 3
+	else:
+		Engine.time_scale = 1
+	print('global time_scale: %s' % Engine.time_scale)
 
 func toggle_fullscreen():
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
