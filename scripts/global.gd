@@ -38,6 +38,14 @@ func _unhandled_key_input(event):
 		toggle_fullscreen()
 	if event.is_action_pressed("debug_speed"):
 		toggle_speed_hack()
+	if event.is_action_pressed("debug_godmode"):
+		toggle_god_mode()
+		
+## Toggles god mode which makes the player invincible to collisions
+func toggle_god_mode():
+	var player := get_tree().get_first_node_in_group("player") as Bird
+	if not player: return
+	player.toggle_god()
 
 ## Toggles whether to speed up time
 func toggle_speed_hack():
@@ -47,6 +55,7 @@ func toggle_speed_hack():
 		Engine.time_scale = 1
 	print('global time_scale: %s' % Engine.time_scale)
 
+## Toggles whether to show the game in full screen
 func toggle_fullscreen():
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

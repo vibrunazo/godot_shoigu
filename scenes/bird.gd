@@ -1,15 +1,16 @@
 #@icon("res://assets/tex/shoigu/image10.png")
-extends RigidBody2D
+class_name Bird extends RigidBody2D
 
-class_name Bird
+signal died
 
 @export var flap_power = 300
 @export var flap_up_bonus = 220
 @export var speed = 160
 
-var flap_up: bool = true
 @onready var anim: AnimatedSprite2D = $Anim
 @onready var audio_hit: AudioStreamPlayer2D = $AudioHit
+@onready var collision: CollisionPolygon2D = $Col
+
 var state: STATE = STATE.INI
 enum STATE {
 	INI,
@@ -18,7 +19,7 @@ enum STATE {
 }
 var ini_gravity: float = 1
 var last_hit: int = Time.get_ticks_msec()
-signal died
+var flap_up: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,6 +42,16 @@ func rot(new_rot):
 func play():
 	state = STATE.PLAY
 	gravity_scale = ini_gravity
+
+## Enables or disables god mode which mkaes the player immune to collisions
+func enable_god(enabled: bool):
+	collision.disabled = enabled
+	print('bird god: %s' % enabled)
+
+## Toggles god mode which mkaes the player immune to collisions
+func toggle_god():
+	enable_god(!collision.disabled)
+
 	
 
 func _unhandled_input(event):
