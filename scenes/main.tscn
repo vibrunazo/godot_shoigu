@@ -42,7 +42,7 @@ gradient = SubResource("Gradient_xm51p")
 fill_from = Vector2(0.637615, 0.701835)
 fill_to = Vector2(0.298165, 0.105505)
 
-[node name="Main" type="Control" node_paths=PackedStringArray("bird", "ui")]
+[node name="Main" type="Control" node_paths=PackedStringArray("bird", "ui") groups=["main"]]
 process_mode = 1
 layout_mode = 3
 anchors_preset = 15

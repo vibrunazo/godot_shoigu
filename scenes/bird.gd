@@ -34,6 +34,9 @@ func _process(_delta):
 	if state != STATE.PLAY: return
 	var d = linear_velocity.y / 15
 	rot(d)
+	if is_god() and global_position.y > 800:
+		global_position.y = 200
+		flap()
 
 func rot(new_rot):
 	anim.rotation_degrees = new_rot
@@ -52,6 +55,9 @@ func enable_god(enabled: bool):
 func toggle_god():
 	enable_god(!collision.disabled)
 
+## Returns whether god mode is enabled and I'm invincible
+func is_god() -> bool:
+	return collision.disabled
 	
 
 func _unhandled_input(event):

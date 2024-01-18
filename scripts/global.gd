@@ -50,10 +50,14 @@ func toggle_god_mode():
 ## Toggles whether to speed up time
 func toggle_speed_hack():
 	if Engine.time_scale == 1:
-		Engine.time_scale = 3
+		Engine.time_scale = 4
 	else:
 		Engine.time_scale = 1
 	print('global time_scale: %s' % Engine.time_scale)
+	var game: Game = get_tree().get_first_node_in_group("main") as Game
+	if not game: return
+	game.set_music_speed(Engine.time_scale)
+	
 
 ## Toggles whether to show the game in full screen
 func toggle_fullscreen():

@@ -115,7 +115,7 @@ func phase_one_spawner():
 func start_phase_two():
 	phase = 2
 	last_spawn_x = cam.global_position.x
-	next_spawn_x = last_spawn_x + 2000
+	next_spawn_x = last_spawn_x + 2400
 	await get_tree().create_timer(12).timeout
 	audio_music.stream = load("res://assets/audio/music/gok theme.ogg")
 	audio_music.play()
@@ -148,8 +148,13 @@ func spawn_gok():
 	$walls.add_child(enemy)
 	spawned += 1
 	
-	
-	
+## Speeds up music by given speed ratio. Sets pitch scale.
+func set_music_speed(speed: float):
+	audio_music.pitch_scale = speed
+	if speed > 1:
+		audio_music.volume_db = Global.music_volume - 12
+	else:
+		audio_music.volume_db = Global.music_volume
 	
 
 func add_score():
