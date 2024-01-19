@@ -129,6 +129,8 @@ func phase_two_spawner():
 	if cam.global_position.x >= next_spawn_x:
 		spawn_gok()
 		var difficulty: float = clampf((spawned - phase_one_max) / float((phase_two_max - phase_one_max) / 2.0), 0, 1)
+		if difficulty > 0.10 and spawned % randi_range(3, 6) == 0:
+			spawn_gok()
 		if difficulty > 0.18 and spawned % 5 == 0:
 			spawn_wall()
 		if difficulty > 0.3 and spawned % 4 == 0:
