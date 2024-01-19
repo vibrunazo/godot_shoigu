@@ -27,3 +27,4 @@ func set_collision_enabled(enabled: bool):
 func _on_area_score_body_entered(body):
 	if body is Bird:
 		game.add_score()
+		print('gok met at %s' % global_position.x)

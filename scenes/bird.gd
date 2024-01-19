@@ -38,6 +38,10 @@ func _process(_delta):
 		global_position.y = 200
 		flap()
 
+func _physics_process(_delta):
+	if state != STATE.PLAY: return
+	linear_velocity.x = speed
+
 func rot(new_rot):
 	anim.rotation_degrees = new_rot
 	$Col.rotation_degrees = new_rot
@@ -81,7 +85,7 @@ func flap():
 		linear_velocity.y = - flap_power
 	else: 
 		linear_velocity.y -= flap_up_bonus
-	linear_velocity.x = speed
+	#linear_velocity.x = speed
 	$AudioFlap.play()
 	anim.stop()
 	anim.play("default", -4, true)

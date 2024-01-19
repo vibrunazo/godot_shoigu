@@ -149,6 +149,12 @@ func spawn_wall():
 	wall.position.x = bird.position.x + 1600
 	$walls.add_child(wall)
 	spawned += 1
+	#var pos_a = bird.global_position.x
+	#var vel_a = bird.linear_velocity.x
+	#var pos_b = wall.global_position.x
+	#var vel_b = 0
+	#var meet_x := Math.calc_meetup(pos_a, vel_a, pos_b, vel_b)
+	#print('game wall meet_x: %s, pos_a: %s, vel_a: %s, pos_b: %s' % [roundf(meet_x), roundf(pos_a), roundf(vel_a), roundf(pos_b)])
 
 ## Spawns a Ghost of Kyiv, speed multiplied by speed_multiplier
 func spawn_gok(speed_multiplier: float = 1):
@@ -163,6 +169,12 @@ func spawn_gok(speed_multiplier: float = 1):
 	enemy.scale.x *= clampf(speed_multiplier, -1, 1)
 	$walls.add_child(enemy)
 	spawned += 1
+	var pos_a = bird.global_position.x
+	var vel_a = bird.linear_velocity.x
+	var pos_b = enemy.global_position.x
+	var vel_b = enemy.speed
+	var meet_x := Math.calc_meetup(pos_a, vel_a, pos_b, vel_b)
+	print('game wall meet_x: %s, pos_a: %s, vel_a: %s, pos_b: %s' % [roundf(meet_x), roundf(pos_a), roundf(vel_a), roundf(pos_b)])
 
 ## Spawns a small ghost of Kyiv in the background moving right
 func spawn_minigok():
