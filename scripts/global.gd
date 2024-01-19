@@ -40,6 +40,14 @@ func _unhandled_key_input(event):
 		toggle_speed_hack()
 	if event.is_action_pressed("debug_godmode"):
 		toggle_god_mode()
+	if event.is_action_pressed("debug_line"):
+		toggle_winpath()
+
+## Toggles the debug line curve visibility. So you can see the win path.
+func toggle_winpath():
+	var winpath: WinPath = get_tree().get_first_node_in_group("winpath") as WinPath
+	if not winpath: return
+	winpath.toggle_visible()
 		
 ## Toggles god mode which makes the player invincible to collisions
 func toggle_god_mode():

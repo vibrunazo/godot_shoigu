@@ -9,6 +9,7 @@ class_name Game extends Control
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var cam: GameCam = $GameCam
 @onready var audio_music: AudioStreamPlayer = $AudioMusic
+@onready var win_path: WinPath = $WinPath
 
 
 static var game_ref: Game
@@ -149,6 +150,10 @@ func spawn_wall():
 	wall.position.x = bird.position.x + 1600
 	$walls.add_child(wall)
 	spawned += 1
+	var ypos: float = win_path.get_y_from_x(wall.global_position.x)
+	if ypos != INF:
+		wall.global_position.y = ypos
+	print('game ypos: %s' % [ypos])
 	#var pos_a = bird.global_position.x
 	#var vel_a = bird.linear_velocity.x
 	#var pos_b = wall.global_position.x

@@ -24,3 +24,17 @@ static func calc_pos_to_meet_at(pos_a: float, vel_a: float, vel_b: float, meetup
 	var pos_b = meetup_pos - travel_distance_B
 	
 	return pos_b
+
+## Returns the point where a given Path2D crosses the given x coordinate.
+## Returns Vector2.INF if no crossing is found
+static func get_crossing_point(path: Path2D, x: float) -> Vector2:
+	var points = path.curve.get_baked_points()
+	for i in range(points.size() - 1):
+		var point1 = points[i]
+		var point2 = points[i + 1]
+		if (point1.x - x) * (point2.x - x) <= 0:  # The line between point1 and point2 crosses x
+			# Interpolate the y-coordinate
+			var t = abs(x - point1.x) / abs(point2.x - point1.x)
+			var y = point1.y + t * (point2.y - point1.y)
+			return Vector2(x, y)
+	return Vector2.INF  # No crossing point found
