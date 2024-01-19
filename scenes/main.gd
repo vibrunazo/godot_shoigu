@@ -124,12 +124,21 @@ func start_phase_two():
 
 ## Handles spawning for phase 2. Called every spawn timeout.
 func phase_two_spawner():
+	var phase_one_max: int = 25
+	var phase_two_max: int = 90
 	if cam.global_position.x >= next_spawn_x:
 		spawn_gok()
-		var next := 400.0
+		var difficulty: float = clampf((spawned - phase_one_max) / float((phase_two_max - phase_one_max) / 2.0), 0, 1)
+		if difficulty > 0.18 and spawned % 5 == 0:
+			spawn_wall()
+		if difficulty > 0.3 and spawned % 4 == 0:
+			spawn_gok(-1)
+		var next_min := lerpf(800, 110, difficulty)
+		var next_max := lerpf(800, 350, difficulty)
+		var next := randf_range(next_min, next_max)
 		last_spawn_x = cam.global_position.x
 		next_spawn_x = last_spawn_x + next
-		print('main spawned gok %s' % [spawned])
+		print('game spawned gok diff: %s, next: %s, min: %s, max: %s, spanwed: %s' % [difficulty, next, next_min, next_max, spawned])
 
 ## Spawns an S300 wall and TEL
 func spawn_wall():
@@ -139,15 +148,17 @@ func spawn_wall():
 	$walls.add_child(wall)
 	spawned += 1
 
-## Spawns a Ghost of Kyiv
-func spawn_gok():
+## Spawns a Ghost of Kyiv, speed multiplied by speed_multiplier
+func spawn_gok(speed_multiplier: float = 1):
 	if not bird: return
 	var enemy: Gok = gok_scene.instantiate() as Gok
-	enemy.position.x = bird.position.x + 1600
+	enemy.position.x = bird.position.x + 1600 * clampf(speed_multiplier, -1, 1)
 	var ymin = -250
 	var ymax = 250
 	var new_y = randf_range(ymin, ymax) + 400
 	enemy.global_position.y = new_y
+	enemy.speed *= speed_multiplier
+	enemy.scale.x *= clampf(speed_multiplier, -1, 1)
 	$walls.add_child(enemy)
 	spawned += 1
 

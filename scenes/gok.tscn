@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://w8dxoh51oc3k"]
+[gd_scene load_steps=9 format=3 uid="uid://w8dxoh51oc3k"]
 
 [ext_resource type="Texture2D" uid="uid://iseay3yot7tg" path="res://assets/tex/gok/gokbladeless.png" id="1_3s4ru"]
 [ext_resource type="Script" path="res://scenes/gok.gd" id="1_dw713"]
@@ -45,6 +45,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kphb4"]
 size = Vector2(183, 163)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psb3l"]
+size = Vector2(64, 2048)
+
 [node name="Gok" type="Node2D"]
 script = ExtResource("1_dw713")
 
@@ -70,3 +73,13 @@ metadata/obstacle = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hit"]
 position = Vector2(-10.5, 6.5)
 shape = SubResource("RectangleShape2D_kphb4")
+
+[node name="AreaScore" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaScore"]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_psb3l")
+
+[connection signal="body_entered" from="AreaScore" to="." method="_on_area_score_body_entered"]
