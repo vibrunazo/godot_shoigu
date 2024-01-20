@@ -4,6 +4,21 @@
 [ext_resource type="Script" path="res://scenes/gok.gd" id="1_dw713"]
 [ext_resource type="Texture2D" uid="uid://fjo4ejd1l3bg" path="res://assets/tex/gok/gokblades.png" id="2_gj2hu"]
 
+[sub_resource type="Animation" id="Animation_f25yj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_d5ar6"]
 resource_name = "fly"
 length = 0.4
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "values": [0.0, -3.14159, -6.28319]
 }
 
-[sub_resource type="Animation" id="Animation_f25yj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ykrk"]
 _data = {
 "RESET": SubResource("Animation_f25yj"),
@@ -43,7 +43,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kphb4"]
-size = Vector2(183, 163)
+size = Vector2(128, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_psb3l"]
 size = Vector2(64, 2048)
@@ -52,6 +52,7 @@ size = Vector2(64, 2048)
 script = ExtResource("1_dw713")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_3s4ru")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
@@ -71,7 +72,7 @@ freeze = true
 metadata/obstacle = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hit"]
-position = Vector2(-10.5, 6.5)
+position = Vector2(-6, 0)
 shape = SubResource("RectangleShape2D_kphb4")
 
 [node name="AreaScore" type="Area2D" parent="."]

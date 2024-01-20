@@ -129,13 +129,17 @@ func phase_two_spawner():
 	var phase_two_max: int = 90
 	if cam.global_position.x >= next_spawn_x:
 		spawn_gok()
-		var difficulty: float = clampf((spawned - phase_one_max) / float((phase_two_max - phase_one_max) / 2.0), 0, 1)
-		if difficulty > 0.10 and spawned % randi_range(3, 6) == 0:
+		var difficulty: float = clampf((spawned - phase_one_max) / float((phase_two_max - phase_one_max) / 3.0), 0, 1)
+		if difficulty > 0.10 and spawned % randi_range(2, 6) == 0:
 			spawn_gok()
-		if difficulty > 0.18 and spawned % 5 == 0:
+		if difficulty > 0.12 and spawned % randi_range(1, 3) == 0:
 			spawn_wall()
-		if difficulty > 0.3 and spawned % 4 == 0:
-			spawn_gok(-1)
+		if difficulty > 0.175 and spawned % 4 == 0:
+			spawn_gok(-1.6)
+		if difficulty > 0.20 and spawned % randi_range(2, 4) == 0:
+			spawn_gok(1.25)
+		if difficulty > 0.3 and spawned % randi_range(2, 3) == 0:
+			spawn_gok(-1.8)
 		var next_min := lerpf(800, 110, difficulty)
 		var next_max := lerpf(800, 350, difficulty)
 		var next := randf_range(next_min, next_max)
@@ -153,7 +157,7 @@ func spawn_wall():
 	var ypos: float = win_path.get_y_from_x(wall.global_position.x)
 	if ypos != INF:
 		wall.global_position.y = ypos
-	print('game ypos: %s' % [ypos])
+	#print('game ypos: %s' % [ypos])
 	#var pos_a = bird.global_position.x
 	#var vel_a = bird.linear_velocity.x
 	#var pos_b = wall.global_position.x
@@ -166,10 +170,7 @@ func spawn_gok(speed_multiplier: float = 1):
 	if not bird: return
 	var enemy: Gok = gok_scene.instantiate() as Gok
 	enemy.position.x = bird.position.x + 1600 * clampf(speed_multiplier, -1, 1)
-	var ymin = -250
-	var ymax = 250
-	var new_y = randf_range(ymin, ymax) + 400
-	enemy.global_position.y = new_y
+	
 	enemy.speed *= speed_multiplier
 	enemy.scale.x *= clampf(speed_multiplier, -1, 1)
 	$walls.add_child(enemy)
@@ -179,7 +180,20 @@ func spawn_gok(speed_multiplier: float = 1):
 	var pos_b = enemy.global_position.x
 	var vel_b = enemy.speed
 	var meet_x := Math.calc_meetup(pos_a, vel_a, pos_b, vel_b)
-	print('game wall meet_x: %s, pos_a: %s, vel_a: %s, pos_b: %s' % [roundf(meet_x), roundf(pos_a), roundf(vel_a), roundf(pos_b)])
+	print('game gok meet_x: %s, pos_a: %s, vel_a: %s, pos_b: %s' % [roundf(meet_x), roundf(pos_a), roundf(vel_a), roundf(pos_b)])
+	var ypos: float = win_path.get_y_from_x(meet_x)
+	var ymin = -250
+	var ymax = 250
+	var new_y = randf_range(ymin, ymax) + 400
+	print('game ypos: %s, new_y: %s' % [round(ypos), round(new_y)])
+	if ypos != INF:
+		if abs(new_y - ypos) <= 200:
+			if new_y + 300 < 400 + 250 + 50:
+				new_y += 300
+			else:
+				new_y -= 300
+			print('game adjustted newy: %s' % [new_y])
+	enemy.global_position.y = new_y
 
 ## Spawns a small ghost of Kyiv in the background moving right
 func spawn_minigok():

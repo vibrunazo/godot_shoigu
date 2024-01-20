@@ -3,8 +3,8 @@ class_name Bird extends RigidBody2D
 
 signal died
 
-@export var flap_power = 300
-@export var flap_up_bonus = 220
+@export var flap_power = 180
+@export var flap_up_bonus = 230
 @export var speed = 160
 
 @onready var anim: AnimatedSprite2D = $Anim

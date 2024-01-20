@@ -101,18 +101,19 @@ stream_2/weight = 1.0
 
 [node name="Bird" type="RigidBody2D" groups=["player"]]
 collision_layer = 3
-gravity_scale = 0.7
+gravity_scale = 0.6
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1_1g6im")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_y023a")
 autoplay = "default"
 frame = 15
 
 [node name="Col" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.7, 0.7)
 polygon = PackedVector2Array(34, 99, -34, 95, -34, -2, -1, -48, 24, -48, 42, 0)
 
 [node name="AudioFlap" type="AudioStreamPlayer2D" parent="."]
